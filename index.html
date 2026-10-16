@@ -87,7 +87,7 @@
         <!-- Status Pill -->
         <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 mb-8 text-xs sm:text-sm text-blue-300 font-medium">
             <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Public Beta v1.0 • Android 8.0+ Ready</span>
+            <span>Public Beta v1.0 &bull; Android 8.0+ Ready</span>
         </div>
         
         <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1] max-w-4xl mx-auto">
@@ -135,7 +135,7 @@
             <!-- Explicit Beta Disclaimer -->
             <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/25 text-left text-xs text-amber-200/90 leading-relaxed">
                 <div class="flex items-start gap-2.5">
-                    <span class="text-base leading-none">⚠️</span>
+                    <span class="text-base leading-none"><svg class="w-5 h-5 text-amber-400 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg></span>
                     <div>
                         <strong class="font-semibold text-amber-300">Beta Version Notice:</strong> You are downloading the early Public Beta release (v1.0) of EdgeGuard AI. It performs 100% local on-device inference without cloud servers. To install, ensure <em>"Install from Unknown Sources"</em> is enabled in your Android settings.
                     </div>
@@ -263,6 +263,135 @@
         </div>
     </section>
 
+
+    <!-- SYSTEM ARCHITECTURE & BEHAVIORAL FLOWCHART -->
+    <section class="container mx-auto px-6 py-16 md:py-24 border-t border-white/5">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 uppercase tracking-wider">
+                End-to-End Pipeline
+            </span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mt-4 mb-4">
+                Real-Time Behavioral Defense Flowchart
+            </h2>
+            <p class="text-slate-400 text-base md:text-lg">
+                How EdgeGuard AI intercepts complex multi-app scam funnels locally on Android without touching a cloud server.
+            </p>
+        </div>
+
+        <div class="relative max-w-5xl mx-auto space-y-8">
+            
+            <!-- STAGE 1: INGESTION -->
+            <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-blue-950/20 to-slate-900/40 border border-blue-500/20 shadow-xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 font-mono font-bold text-xs flex items-center justify-center border border-blue-500/30">1</span>
+                    <h3 class="text-lg font-bold text-white">Multi-Modal Ingestion Layer <span class="text-xs font-mono text-blue-400 font-normal">(Android Accessibility + Telephony)</span></h3>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                        <div class="font-semibold text-blue-300 mb-1 flex items-center gap-1.5">
+                            <span>Meta & Instagram Ads</span>
+                        </div>
+                        <p class="text-slate-400">Captures sponsored trading reels, bogus SEBI claims, and WhatsApp redirect taps.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                        <div class="font-semibold text-cyan-300 mb-1 flex items-center gap-1.5">
+                            <span>Group Chat Payloads</span>
+                        </div>
+                        <p class="text-slate-400">Scans mass broadcast links, fake crypto airdrops, and phishing URLs in WA/TG groups.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                        <div class="font-semibold text-rose-300 mb-1 flex items-center gap-1.5">
+                            <span>Disguised APK Files</span>
+                        </div>
+                        <p class="text-slate-400">Hooks file clicks on echallan.apk, wedding card APKs, and unverified package installers.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                        <div class="font-semibold text-emerald-300 mb-1 flex items-center gap-1.5">
+                            <span>Telephony & Bank OTP</span>
+                        </div>
+                        <p class="text-slate-400">Records incoming SMS OTP timestamps and correlates unknown incoming calls within 7m.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONNECTOR ARROW -->
+            <div class="flex justify-center -my-3">
+                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+            </div>
+
+            <!-- STAGE 2: DUAL ENGINE -->
+            <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-indigo-950/20 to-slate-900/40 border border-indigo-500/20 shadow-xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-7 h-7 rounded-lg bg-indigo-500/20 text-indigo-400 font-mono font-bold text-xs flex items-center justify-center border border-indigo-500/30">2</span>
+                    <h3 class="text-lg font-bold text-white">EdgeGuard Dual Threat Engine <span class="text-xs font-mono text-indigo-400 font-normal">(100% Offline Inference)</span></h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <!-- Pillar 1 -->
+                    <div class="p-5 rounded-xl bg-white/[0.03] border border-white/5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-sm text-indigo-300">Pillar 1: NLP & Deterministic Pipeline</h4>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400">&lt;0.1ms - 185ms</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Ultra-fast token matrix evaluates homoglyphs, delimiter bypasses, and known scam triggers in &lt;0.08ms. Ambiguous variants pass through our 8-bit quantized Small Language Model (SLM A0908i) in ~185ms.
+                        </p>
+                    </div>
+
+                    <!-- Pillar 2 -->
+                    <div class="p-5 rounded-xl bg-white/[0.03] border border-white/5 space-y-3">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-sm text-emerald-300">Pillar 2: Real-Time User Behavior Analysis</h4>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Cross-App Funnels</span>
+                        </div>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Tracks state transitions across Instagram &rarr; Telegram groups, monitors active telephony during AnyDesk installs, and flags banking app launches during simulated digital arrest coercion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONNECTOR ARROW -->
+            <div class="flex justify-center -my-3">
+                <div class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </div>
+            </div>
+
+            <!-- STAGE 3: INTERVENTION -->
+            <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-rose-950/20 to-slate-900/40 border border-rose-500/20 shadow-xl">
+                <div class="flex items-center gap-3 mb-6">
+                    <span class="w-7 h-7 rounded-lg bg-rose-500/20 text-rose-400 font-mono font-bold text-xs flex items-center justify-center border border-rose-500/30">3</span>
+                    <h3 class="text-lg font-bold text-white">Instant Action & Intervention Layer <span class="text-xs font-mono text-rose-400 font-normal">(Zero Friction)</span></h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                        <div class="font-semibold text-rose-300 mb-1">Compose Overlay Alert</div>
+                        <p class="text-slate-400">Pops a non-blocking red warning card over WhatsApp, Telegram, Phone, or Instagram with scam context.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                        <div class="font-semibold text-rose-300 mb-1">Package Installer Abort</div>
+                        <p class="text-slate-400">Simulates Android GLOBAL_ACTION_BACK to automatically dismiss malicious APK installers before clickjacking.</p>
+                    </div>
+
+                    <div class="p-4 rounded-xl bg-white/[0.03] border border-white/5">
+                        <div class="font-semibold text-rose-300 mb-1">Encrypted Local History</div>
+                        <p class="text-slate-400">Logs threat metrics strictly to private Room SQLite database with automated 14-day record purging.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- ARCHITECTURE PILLARS -->
     <section class="container mx-auto px-6 py-16 md:py-24 border-t border-white/5">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -326,7 +455,7 @@
 
     <!-- Footer -->
     <footer class="container mx-auto px-6 py-10 border-t border-white/5 text-center text-slate-500 text-xs sm:text-sm">
-        <p class="mb-2">EdgeGuard AI • Public Beta v1.0 • Licensed under the Apache License 2.0</p>
+        <p class="mb-2">EdgeGuard AI &bull; Public Beta v1.0 &bull; Licensed under the Apache License 2.0</p>
         <p>Architected & Engineered by <a href="https://github.com/parv55555" class="text-slate-400 hover:text-white underline">Parv Khandelwal</a></p>
     </footer>
 
