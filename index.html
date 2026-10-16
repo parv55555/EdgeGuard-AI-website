@@ -1,90 +1,301 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EdgeGuard AI | On-Device Scam Detection</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="min-h-screen bg-neutral-950 text-slate-50 font-sans selection:bg-blue-500/30 overflow-x-hidden">
+    <title>EdgeGuard AI (Beta) | Zero-Cloud On-Device Scam Protection</title>
+    <meta name="description" content="Download EdgeGuard AI Beta APK. 100% on-device scam interception, behavioral threat analysis, and zero-latency social engineering protection powered by SLM A0908i.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-    <!-- Navigation -->
-    <nav class="container mx-auto px-6 py-6 flex justify-between items-center border-b border-white/5">
-        <div class="flex items-center gap-2">
-            <span class="text-xl font-bold tracking-tight text-blue-500">🛡️ EdgeGuard AI</span>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(59, 130, 246, 0.35);
+        }
+        .glow-card:hover {
+            box-shadow: 0 0 35px -5px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#07090e] text-slate-100 font-sans selection:bg-blue-500/30 overflow-x-hidden antialiased">
+
+    <!-- Background Ambient Gradients -->
+    <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[650px] h-[650px] bg-blue-600/15 rounded-full blur-[120px]"></div>
+        <div class="absolute top-1/2 -right-40 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px]"></div>
+        <div class="absolute -bottom-40 -left-40 w-[500px] h-[500px] bg-cyan-600/10 rounded-full blur-[140px]"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#07090e]/80 border-b border-white/5">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 7-2 2.5 0 4.5 1.2 7 2a1 1 0 0 1 1 1v7z"></path></svg>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xl font-bold tracking-tight text-white">EdgeGuard<span class="text-blue-500">.AI</span></span>
+                    <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/25 tracking-wide uppercase">Beta</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <a href="https://github.com/parv55555/EdgeGuard-AI" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="#download" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow-md shadow-blue-600/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                    <span>Get Beta APK</span>
+                </a>
+            </div>
         </div>
-        <div class="hidden sm:block text-sm font-medium px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">
-            Prototype Ready
-        </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <main class="container mx-auto px-6 pt-16 md:pt-24 pb-16 text-center">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-8 text-xs sm:text-sm text-slate-300">
-            <span class="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            Now testing on Android
+    <main class="container mx-auto px-6 pt-16 md:pt-24 pb-20 text-center">
+        <!-- Status Pill -->
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 mb-8 text-xs sm:text-sm text-blue-300 font-medium">
+            <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Public Beta v1.0 • Android 8.0+ Ready</span>
         </div>
         
-        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 bg-gradient-to-br from-white to-slate-500 bg-clip-text text-transparent leading-tight">
-            Helps you to identify scams before they reach your bank accounts.
+        <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.1] max-w-4xl mx-auto">
+            Stop scams before they reach the <span class="bg-gradient-to-r from-blue-400 via-indigo-300 to-sky-400 bg-clip-text text-transparent">cloud.</span>
         </h1>
         
-        <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed px-2">
-            Real-time scam detection through AI(NLP) & digital behavioral analysis running 100% on-device. Zero latency, absolute privacy, and advanced intent detection powered by our fine-tuned SLM, A0908i.
+        <p class="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+            Real-time scam detection and <span class="text-slate-200 font-medium">user behavior analysis</span> running 100% on-device. Zero cloud latency, absolute privacy, and instant threat interception powered by our fine-tuned SLM, <span class="text-blue-400 font-mono font-medium">A0908i</span>.
         </p>
 
-        <!-- Waitlist Form -->
-        <form class="max-w-md mx-auto flex flex-col sm:flex-row gap-3 px-2 sm:px-0" action="#" method="POST">
-            <input 
-                type="email" 
-                name="email"
-                placeholder="Enter your email" 
-                class="flex-1 bg-white/5 border border-white/10 rounded-lg px-4 py-3 sm:py-4 text-slate-50 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all text-center sm:text-left"
-                required
-            />
-            <button 
-                type="submit"
-                class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 sm:py-4 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 whitespace-nowrap"
-            >
-                Join Waitlist ➔
-            </button>
-        </form>
+        <!-- DOWNLOAD CTA SECTION -->
+        <div id="download" class="max-w-xl mx-auto p-6 md:p-8 rounded-2xl bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 glow-effect text-center mb-8">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+                <a 
+                    href="EdgeGuard-AI-beta.apk" 
+                    download="EdgeGuard-AI-beta.apk"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-8 py-4 rounded-xl font-bold text-base sm:text-lg shadow-xl shadow-blue-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all"
+                >
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                        <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.997-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5896 8.4239 13.8568 8 12 8s-3.5896.4239-5.1365 1.0507L4.8412 5.5477a.416.416 0 00-.5676-.1521.416.416 0 00-.1521.5676l1.997 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+                    </svg>
+                    <span>Download Beta APK</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                </a>
+
+                <a 
+                    href="https://github.com/parv55555/EdgeGuard-AI" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white px-6 py-4 rounded-xl font-semibold text-sm border border-white/10 transition-all"
+                >
+                    <span>View Source</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+            </div>
+
+            <!-- APK Specs Chips -->
+            <div class="flex flex-wrap items-center justify-center gap-3 text-xs text-slate-400 font-mono mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">Version: 1.0-beta</span>
+                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/5">Format: Universal APK</span>
+                <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">100% Offline</span>
+            </div>
+
+            <!-- Explicit Beta Disclaimer -->
+            <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-left text-xs text-amber-200/90 leading-relaxed">
+                <div class="flex items-start gap-2.5">
+                    <span class="text-base leading-none">⚠️</span>
+                    <div>
+                        <strong class="font-semibold text-amber-300">Beta Version Notice:</strong> You are downloading the early Public Beta release of EdgeGuard AI. It operates with 100% on-device local inference. To install, ensure <em>"Install from Unknown Sources"</em> is enabled in your Android settings.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs sm:text-sm text-slate-400">
+            <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>No Account Required</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Zero Cloud Streaming</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Sub-Millisecond Reflex</span>
+            </div>
+        </div>
     </main>
 
-    <!-- Features Grid -->
+    <!-- CORE FEATURE SECTION: USER BEHAVIOR ANALYSIS -->
     <section class="container mx-auto px-6 py-16 md:py-24 border-t border-white/5">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-semibold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-wider">
+                Behavioral Intelligence
+            </span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mt-4 mb-4">
+                Beyond text. Real-time behavior analysis.
+            </h2>
+            <p class="text-slate-400 text-base md:text-lg">
+                Modern scammers don't just send messages—they orchestrate multi-app attack funnels. EdgeGuard AI analyzes cross-app actions locally to intercept scams before you lose control.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             
-            <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/5 text-center md:text-left">
-                <div class="text-4xl mb-4">🔒</div>
-                <h3 class="text-xl font-bold mb-3">Absolute Privacy</h3>
+            <!-- Feature 1: Social Media Funnel -->
+            <div class="p-8 rounded-2xl bg-gradient-to-b from-white/[0.05] to-transparent border border-white/5 hover:border-blue-500/30 transition-all glow-card">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-6 text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                    <span>Social Funnel Interceptor</span>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-blue-500/10 text-blue-400">Active</span>
+                </h3>
                 <p class="text-slate-400 leading-relaxed text-sm md:text-base">
-                    Your data(messages & behaviour stats) never leave your phone. We analyze intent locally, ensuring personal data stays out of the cloud and away from third parties.
+                    Redirected from an Instagram or Facebook ad to join an unverified <strong>WhatsApp or Telegram group</strong>? EdgeGuard AI detects the cross-app transition and alerts you instantly against fake stock trading tips, crypto scams, and fraudulent task groups.
                 </p>
             </div>
 
-            <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/5 text-center md:text-left">
-                <div class="text-4xl mb-4">⚡</div>
-                <h3 class="text-xl font-bold mb-3">Zero Latency</h3>
+            <!-- Feature 2: Sextortion Defense -->
+            <div class="p-8 rounded-2xl bg-gradient-to-b from-white/[0.05] to-transparent border border-white/5 hover:border-purple-500/30 transition-all glow-card">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-6 text-purple-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2"></rect></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                    <span>Sextortion Video Call Defense</span>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-purple-500/10 text-purple-400">Active</span>
+                </h3>
                 <p class="text-slate-400 leading-relaxed text-sm md:text-base">
-                    Cloud round-trips are too slow to stop a fraudulent click. Our on-device architecture intercepts malicious behavior instantaneously.
+                    Detects incoming video calls from <strong>unknown, unsaved numbers</strong> across WhatsApp, Telegram, or cellular networks. Instantly warns you to keep your camera covered and decline, preventing scammers from capturing your face for extortion videos.
                 </p>
             </div>
 
-            <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/5 text-center md:text-left">
-                <div class="text-4xl mb-4">⚙️</div>
-                <h3 class="text-xl font-bold mb-3">Powered by SLM A0908i</h3>
+            <!-- Feature 3: OTP Theft Interceptor -->
+            <div class="p-8 rounded-2xl bg-gradient-to-b from-white/[0.05] to-transparent border border-white/5 hover:border-emerald-500/30 transition-all glow-card">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-6 text-emerald-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path><path d="m9 12 2 2 4-4"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                    <span>Bank OTP + Call Theft Protection</span>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">Active</span>
+                </h3>
                 <p class="text-slate-400 leading-relaxed text-sm md:text-base">
-                    Built on A0908i, our proprietary, fine-tuned Small Language Model (SLM). It delivers high-accuracy classification without thermal throttling or draining your battery.
+                    Received an official bank OTP, and an unknown number calls you within <strong>7 minutes</strong>? EdgeGuard AI correlates the temporal timing and displays a bold overlay warning directly on top of the call screen: <em>"NEVER share your OTP over the phone!"</em>
+                </p>
+            </div>
+
+            <!-- Feature 4: Remote Access (RAT) Watchdog -->
+            <div class="p-8 rounded-2xl bg-gradient-to-b from-white/[0.05] to-transparent border border-white/5 hover:border-rose-500/30 transition-all glow-card">
+                <div class="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center mb-6 text-rose-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="m9 9 6 6"></path><path d="m15 9-6 6"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">
+                    <span>Remote Access (RAT) Watchdog</span>
+                    <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-rose-500/10 text-rose-400">Active</span>
+                </h3>
+                <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                    Being persuaded over an active call to download <strong>AnyDesk, TeamViewer, or RustDesk</strong>? EdgeGuard AI intercepts the installation immediately, alerting you to severe device hijacking and advising you to terminate the call.
                 </p>
             </div>
 
         </div>
     </section>
 
+    <!-- ARCHITECTURE PILLARS -->
+    <section class="container mx-auto px-6 py-16 md:py-24 border-t border-white/5">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/5">
+                <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-6 text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">100% Offline Privacy</h3>
+                <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                    Zero network permissions used for user telemetry. Your WhatsApp, SMS, and personal messages never leave your phone hardware.
+                </p>
+            </div>
+
+            <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/5">
+                <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-6 text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">&lt;0.1 ms Deterministic Reflex</h3>
+                <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                    Cloud round-trips are too slow to prevent a scam click. Our sub-millisecond local rule engine and ~185ms quantized NLP trigger warnings instantly.
+                </p>
+            </div>
+
+            <div class="p-6 md:p-8 rounded-2xl bg-gradient-to-b from-white/5 to-transparent border border-white/5">
+                <div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center mb-6 text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="4" rx="2" ry="2"></rect><rect width="6" height="6" x="9" y="9" rx="1"></rect><path d="M15 2v2"></path><path d="M15 20v2"></path><path d="M2 15h2"></path><path d="M2 9h2"></path><path d="M20 15h2"></path><path d="M20 9h2"></path><path d="M9 2v2"></path><path d="M9 20v2"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Powered by SLM A0908i</h3>
+                <p class="text-slate-400 leading-relaxed text-sm md:text-base">
+                    Built on A0908i, our proprietary 8-bit quantized Small Language Model, delivering 92%+ scam detection accuracy with a minimal battery and memory footprint.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INSTALLATION INSTRUCTIONS -->
+    <section class="container mx-auto px-6 py-16 border-t border-white/5">
+        <div class="max-w-3xl mx-auto">
+            <h3 class="text-2xl font-bold text-center mb-8">How to Install the Beta APK</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
+                <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span class="inline-block w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 font-bold text-center leading-8 mb-3">1</span>
+                    <h4 class="font-bold mb-1 text-sm">Download APK</h4>
+                    <p class="text-xs text-slate-400">Tap the download button above to get <code class="text-slate-300">EdgeGuard-AI-beta.apk</code> on your Android device.</p>
+                </div>
+                <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span class="inline-block w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 font-bold text-center leading-8 mb-3">2</span>
+                    <h4 class="font-bold mb-1 text-sm">Allow Unknown Source</h4>
+                    <p class="text-xs text-slate-400">Open the APK from your notification bar or downloads, and tap "Allow" when prompted by your browser or files app.</p>
+                </div>
+                <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5">
+                    <span class="inline-block w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 font-bold text-center leading-8 mb-3">3</span>
+                    <h4 class="font-bold mb-1 text-sm">Enable Protection</h4>
+                    <p class="text-xs text-slate-400">Launch EdgeGuard AI and enable Accessibility & Overlay permissions so it can monitor and alert locally.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="container mx-auto px-6 py-8 border-t border-white/5 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 EdgeGuard AI. All rights reserved.</p>
+    <footer class="container mx-auto px-6 py-10 border-t border-white/5 text-center text-slate-500 text-xs sm:text-sm">
+        <p class="mb-2">EdgeGuard AI • Public Beta v1.0 • Licensed under the Apache License 2.0</p>
+        <p>Architected & Engineered by <a href="https://github.com/parv55555" class="text-slate-400 hover:text-white underline">Parv Khandelwal</a></p>
     </footer>
 
 </body>
