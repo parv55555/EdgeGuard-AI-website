@@ -141,6 +141,34 @@
                     </div>
                 </div>
             </div>
+        
+            <!-- Google Play Protect Guidance Alert -->
+            <div class="mt-5 p-4 rounded-xl bg-gradient-to-r from-amber-500/10 via-blue-500/10 to-indigo-500/10 border border-amber-500/30 text-left text-xs leading-relaxed text-slate-300">
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 mt-0.5 border border-amber-500/30">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+                    </div>
+                    <div>
+                        <div class="font-bold text-white text-sm mb-1 flex items-center gap-2">
+                            <span>Seeing "Blocked by Play Protect"? Here's how to install:</span>
+                        </div>
+                        <p class="text-slate-300 text-xs mb-2.5">
+                            Because EdgeGuard AI is an independent, 100% on-device Public Beta not yet distributed via Google Play, Android displays a standard <em>"Unrecognized Developer"</em> security screen.
+                        </p>
+                        <div class="p-3 rounded-lg bg-black/50 border border-white/10 space-y-1.5 font-sans text-xs">
+                            <div class="flex items-center gap-2 text-slate-200">
+                                <span class="w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center text-[10px] font-bold">1</span>
+                                <span>When the warning appears, tap <strong class="text-white underline decoration-blue-400 font-semibold">"More details"</strong> (Do NOT click OK).</span>
+                            </div>
+                            <div class="flex items-center gap-2 text-slate-200">
+                                <span class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-[10px] font-bold">2</span>
+                                <span>Tap <strong class="text-emerald-400 underline font-semibold">"Install anyway"</strong> to complete installation.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- Trust Badges -->
@@ -429,25 +457,35 @@
         </div>
     </section>
 
-    <!-- INSTALLATION INSTRUCTIONS -->
+        <!-- INSTALLATION INSTRUCTIONS -->
     <section class="container mx-auto px-6 py-16 border-t border-white/5">
-        <div class="max-w-3xl mx-auto">
-            <h3 class="text-2xl font-bold text-center mb-8">How to Install the Beta APK</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center sm:text-left">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-2xl font-bold text-center mb-3">How to Install the Beta APK</h3>
+            <p class="text-center text-sm text-slate-400 mb-10 max-w-xl mx-auto">Follow these 4 simple steps to install EdgeGuard AI safely on any Android 8.0+ device.</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 text-center sm:text-left">
                 <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5">
                     <span class="inline-block w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 font-bold text-center leading-8 mb-3">1</span>
-                    <h4 class="font-bold mb-1 text-sm">Download APK</h4>
-                    <p class="text-xs text-slate-400">Tap the download button above to get <code class="text-slate-300">EdgeGuard-AI-beta.apk</code> on your Android device.</p>
+                    <h4 class="font-bold mb-1 text-sm text-white">Download APK</h4>
+                    <p class="text-xs text-slate-400">Tap "Download Beta APK" above to save <code class="text-slate-300">EdgeGuard-AI-beta.apk</code> on your phone.</p>
                 </div>
+
                 <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5">
                     <span class="inline-block w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 font-bold text-center leading-8 mb-3">2</span>
-                    <h4 class="font-bold mb-1 text-sm">Allow Unknown Source</h4>
-                    <p class="text-xs text-slate-400">Open the APK from your notification bar or downloads, and tap "Allow" when prompted by your browser or files app.</p>
+                    <h4 class="font-bold mb-1 text-sm text-white">Allow Source</h4>
+                    <p class="text-xs text-slate-400">Open the APK from downloads, and tap "Settings &rarr; Allow from this source" when prompted.</p>
                 </div>
+
+                <div class="p-5 rounded-xl bg-amber-500/[0.05] border border-amber-500/20">
+                    <span class="inline-block w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 font-bold text-center leading-8 mb-3">3</span>
+                    <h4 class="font-bold mb-1 text-sm text-amber-300">Play Protect Prompt</h4>
+                    <p class="text-xs text-slate-300">If "Blocked by Play Protect" shows: Tap <strong class="text-white underline">"More details"</strong> &rarr; <strong class="text-emerald-400 underline">"Install anyway"</strong>.</p>
+                </div>
+
                 <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5">
-                    <span class="inline-block w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 font-bold text-center leading-8 mb-3">3</span>
-                    <h4 class="font-bold mb-1 text-sm">Enable Protection</h4>
-                    <p class="text-xs text-slate-400">Launch EdgeGuard AI and enable Accessibility & Overlay permissions so it can monitor and alert locally.</p>
+                    <span class="inline-block w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 font-bold text-center leading-8 mb-3">4</span>
+                    <h4 class="font-bold mb-1 text-sm text-white">Enable Protection</h4>
+                    <p class="text-xs text-slate-400">Open EdgeGuard AI and enable Accessibility & Overlay permissions to activate real-time local defense.</p>
                 </div>
             </div>
         </div>
