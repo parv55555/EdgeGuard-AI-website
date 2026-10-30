@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features & Scam Detections | EdgeGuard</title>
+    <meta name="description" content="Explore all 20+ scams, social engineering funnels, and behavioral patterns diagnosed and neutralized by EdgeGuard 100% on-device.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(59, 130, 246, 0.35);
+        }
+        .glow-card:hover {
+            box-shadow: 0 0 35px -5px rgba(59, 130, 246, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#07090e] text-slate-100 font-sans selection:bg-blue-500/30 overflow-x-hidden antialiased">
+
+    <!-- Background Ambient Gradients -->
+    <div class="fixed inset-0 pointer-events-none -z-10 overflow-hidden">
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-blue-600/15 rounded-full blur-[130px]"></div>
+        <div class="absolute top-1/2 -right-40 w-[550px] h-[550px] bg-indigo-600/10 rounded-full blur-[140px]"></div>
+        <div class="absolute -bottom-40 -left-40 w-[550px] h-[550px] bg-rose-600/10 rounded-full blur-[140px]"></div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#07090e]/85 border-b border-white/5">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-2.5 group">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-2 7-2 2.5 0 4.5 1.2 7 2a1 1 0 0 1 1 1v7z"></path></svg>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xl font-bold tracking-tight text-white">Edge<span class="text-blue-500">Guard</span></span>
+                    <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/25 tracking-wide uppercase">Threat Matrix</span>
+                </div>
+            </a>
+
+            <div class="flex items-center gap-6">
+                <a href="index.html" class="text-sm text-slate-300 hover:text-white transition-colors flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    <span>Back to Home</span>
+                </a>
+                <a href="privacy-policy.html" class="hidden md:flex text-sm text-slate-400 hover:text-white transition-colors">Privacy Policy</a>
+                <a href="https://github.com/parv55555/EdgeGuard-AI" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub</span>
+                </a>
+                <a href="index.html#download" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow-md shadow-blue-600/20">
+                    <span>Download APK</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-6 py-12 md:py-20 max-w-5xl">
+        
+        <!-- Header Section -->
+        <div class="mb-14 text-center max-w-3xl mx-auto">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/25 mb-5 text-xs text-blue-400 font-medium">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Complete Defense Specifications</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-4">
+                Features & Threat Detection Capabilities
+            </h1>
+            <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+                An exhaustive, auditable breakdown of every scam type, behavioral heuristic, and on-device NLP rule engineered into EdgeGuard to protect users in real time.
+            </p>
+        </div>
+
+        <!-- Section 1: Core Architectural Pillars -->
+        <div class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm font-bold border border-blue-500/30">01</span>
+                <h2 class="text-2xl font-bold text-white">Core System Features & Architecture</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+                    <div class="flex items-center gap-2.5 text-blue-400 font-bold text-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span>100% On-Device AI / NLP Engine</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Executes text classification, keyword vector matching, and NLP inference entirely on the mobile processor using a quantized TensorFlow Lite model (<code class="text-blue-300 font-mono">A0908i</code>). Zero messages are sent to external servers.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+                    <div class="flex items-center gap-2.5 text-indigo-400 font-bold text-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        <span>Complex Event Processing (CEP) / UBA</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Correlates asynchronous system events (unknown phone calls, SMS notifications, app switching, screen time, and temporal deltas) to detect multi-stage social engineering that static scanners miss.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+                    <div class="flex items-center gap-2.5 text-emerald-400 font-bold text-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                        <span>Real-Time Floating Warning Overlays</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Renders high-visibility floating warning cards directly over active messaging chats, phone dialers, or browsers using Android's WindowManager, giving instant explanations and intervention buttons.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+                    <div class="flex items-center gap-2.5 text-rose-400 font-bold text-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        <span>Encrypted Local DB & 12-Day Auto-Purge</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        All threat detections and audit records are saved in a local, encrypted Room SQLite database on your device. To ensure total data hygiene, records older than 12 days are automatically deleted.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: All 20 Scams Grouped By Vector -->
+        <div class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm font-bold border border-blue-500/30">02</span>
+                <h2 class="text-2xl font-bold text-white">The 20 Scams Diagnosed & Alerted</h2>
+            </div>
+
+            <!-- Group A: Behavioral, Call & Social Engineering -->
+            <div class="mb-10 space-y-4">
+                <div class="flex items-center gap-2 border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono uppercase tracking-wider text-emerald-400 font-semibold">Group A</span>
+                    <h3 class="text-lg font-bold text-white">Behavioral, Call & Social Engineering Scams</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- 1. Digital Arrest -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-white text-base">1. Digital Arrest Scam</h4>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/25">High Severity</span>
+                        </div>
+                        <p class="text-xs text-slate-300"><strong>Mechanism:</strong> Scammers pose as Police/CBI/Narcotics on video calls, intimidating victims into keeping the call active and opening their bank app to transfer "security funds".</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Active unknown video call > 15 minutes + Banking/UPI app opened during call or within 2 hours.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Digital Arrest Warning Overlay</div>
+                    </div>
+
+                    <!-- 2. OTP Theft / Vishing -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-white text-base">2. OTP Theft / Voice Phishing (Vishing)</h4>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/25">High Severity</span>
+                        </div>
+                        <p class="text-xs text-slate-300"><strong>Mechanism:</strong> Scammer calls claiming to be bank or telecom support and urges the victim to speak the OTP aloud while a fraudulent transaction is pending.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> High-value OTP arrives while on call with an unknown caller, or unknown call arrives within 7 minutes of an OTP.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Full-Screen OTP Warning Overlay</div>
+                    </div>
+
+                    <!-- 3. RAT / Screen Sharing -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-white text-base">3. Screen-Sharing / RAT Takeover Scam</h4>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/25">Device Threat</span>
+                        </div>
+                        <p class="text-xs text-slate-300"><strong>Mechanism:</strong> Fraudsters instruct victims to install AnyDesk, TeamViewer, or RustDesk to solve a fake issue, granting full remote view of phone screens.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Package install of blacklisted remote software during or within 1 hour of a call with an unknown number.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: RAT Watchdog Warning Overlay</div>
+                    </div>
+
+                    <!-- 4. Sextortion -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <div class="flex items-center justify-between">
+                            <h4 class="font-bold text-white text-base">4. Sextortion / Video Call Blackmail</h4>
+                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/25">Pre-Answer</span>
+                        </div>
+                        <p class="text-xs text-slate-300"><strong>Mechanism:</strong> Unknown contact initiates an unexpected video call to record the victim's face alongside explicit footage for extortion.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Incoming VoIP video call notification in WhatsApp, Telegram, Meet, Zoom, or Skype from an unsaved number.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Sextortion Warning Overlay</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group B: Malicious Apps, APKs & Sideloading -->
+            <div class="mb-10 space-y-4">
+                <div class="flex items-center gap-2 border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold">Group B</span>
+                    <h3 class="text-lg font-bold text-white">Malicious App, APK & Sideloading Scams</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- 5. Pre-Install Shield -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">5. Pre-Install APK Shield</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> Trojan APKs sent on WhatsApp (Fake e-Challan APK, Wedding Card APK, PM-Kisan APK).</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Detects Android Package Installer screen attempting to install unverified APKs outside Google Play.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Pre-Install Warning Card</div>
+                    </div>
+
+                    <!-- 6. Post-Install Watchdog -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">6. Post-Install Sideload Watchdog</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> Background installs originating from web browsers, Telegram, or unofficial file managers.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Inspects <code class="text-blue-300 font-mono text-[10px]">getInstallSourceInfo()</code> on package added events to flag unauthorized sources.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Post-Install Sideload Alert</div>
+                    </div>
+
+                    <!-- 7. Browser APK Download Interceptor -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">7. Browser APK Download Interceptor</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> Drive-by APK downloads triggered by clicking malicious ad banners in Chrome or Samsung Internet.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Accessibility node inspection of browser download prompts matching <code class="text-blue-300 font-mono text-[10px]">.apk</code>.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Malicious APK Download Alert</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group C: Social Funnels & Search Intent -->
+            <div class="mb-10 space-y-4">
+                <div class="flex items-center gap-2 border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono uppercase tracking-wider text-amber-400 font-semibold">Group C</span>
+                    <h3 class="text-lg font-bold text-white">Social Funnels & Pre-Emptive Search Intent Scams</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- 8. Meta / IG Ad to Group Funnel -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">8. Meta / Instagram Ad Scam Funnel</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> Sponsored Instagram/Facebook trading ads promising 500% profits that funnel users directly into Telegram/WhatsApp scam groups.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Rapid app transition (< 60s) from Instagram, Facebook, or browser into group invite UI ("Join Group" / "Join Channel").</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Scam Funnel Warning Overlay</div>
+                    </div>
+
+                    <!-- 9. DM Funnel Jump -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">9. Direct Message (DM) Funnel Jump</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> Social ads jumping users into 1-on-1 WhatsApp chats with scammers claiming to offer part-time jobs or crypto investments.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Immediate transition from ad/browser into an unsaved numeric contact conversation.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: DM Scam Funnel Overlay</div>
+                    </div>
+
+                    <!-- 10. Fake Travel Booking -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">10. Fake Hotel & Tour Booking Scam</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> Fake hotel listings on search engines redirecting users to WhatsApp, where scammers demand QR code advance payments.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Browser hotel search + WhatsApp chat within 30 min + Payment/QR/UPI request text detected on screen.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Booking Scam Warning Overlay</div>
+                    </div>
+
+                    <!-- 11. Fake Customer Care Intent -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">11. Pre-Emptive Customer Care Scam</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> SEO-poisoned fake customer care and toll-free numbers placed on Google by cybercriminals.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Detects user typing customer care or helpline queries in browser URL/search bars.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Pre-Emptive Helpline Safety Alert</div>
+                    </div>
+
+                    <!-- 12. Instant Loan Trap -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">12. Pre-Emptive Instant Loan Trap</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> Predatory loan apps charging illegal fees and blackmailing victims using contact list access.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Browser search input matching instant loan queries.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Pre-Emptive Loan Safety Alert</div>
+                    </div>
+
+                    <!-- 13. Part-Time Job / Task Scam -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">13. Pre-Emptive Part-Time Job Scam</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> "Like YouTube videos for money" or "WFH data entry" requiring upfront security deposits or registration fees.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Browser search input matching online task and WFH job search patterns.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Pre-Emptive Job Safety Alert</div>
+                    </div>
+
+                    <!-- 14. VIP Trading & Crypto -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">14. Pre-Emptive Trading & Crypto Scam</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> Unregistered advisory groups promising guaranteed returns or risk-free crypto doubling.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> Browser search queries matching stock tips, intraday signals, and crypto trading.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Pre-Emptive Trading Safety Alert</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group D: Message, Notification & Text Phishing -->
+            <div class="mb-10 space-y-4">
+                <div class="flex items-center gap-2 border-b border-white/10 pb-2">
+                    <span class="text-xs font-mono uppercase tracking-wider text-rose-400 font-semibold">Group D</span>
+                    <h3 class="text-lg font-bold text-white">Message, Notification & Text Phishing Scams</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-3 gap-4">
+                    <!-- 15. Electricity Bill Cut -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">15. Electricity Disconnection Scam</h4>
+                        <p class="text-xs text-slate-300">Detects messages claiming power will be cut tonight at 9:30 PM due to unpaid bills.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: TFLite SLM + Deterministic</div>
+                    </div>
+
+                    <!-- 16. Bank / PAN / KYC Block -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">16. Bank / PAN / KYC Block Scam</h4>
+                        <p class="text-xs text-slate-300">Detects phishing notices claiming SBI YONO, bank accounts, or SIMs are suspended.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: TFLite SLM + Vector Match</div>
+                    </div>
+
+                    <!-- 17. Fake Payment Credit (Reverse-UPI) -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">17. Fake Payment Credit (Reverse-UPI)</h4>
+                        <p class="text-xs text-slate-300">Detects forged credit SMS from personal numbers used to trick victims into refunding fake payments.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: Sender Validation + Balance Heuristic</div>
+                    </div>
+
+                    <!-- 18. Fake Lottery / KBC -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">18. Fake Lottery / KBC Prize</h4>
+                        <p class="text-xs text-slate-300">Flags unsolicited SMS claiming ₹25 Lakh lottery victories in lucky draws.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: TFLite SLM Classifier</div>
+                    </div>
+
+                    <!-- 19. Browser Push Notification Spam -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">19. Fake Virus Browser Spam</h4>
+                        <p class="text-xs text-slate-300">Intercepts rogue web notifications ("virus detected", "clean storage now", "mcafee expired").</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: Notification Listener Spam Rule</div>
+                    </div>
+
+                    <!-- 20. Obfuscated Betting Funnels -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">20. Obfuscated Betting Funnels</h4>
+                        <p class="text-xs text-slate-300">Detects illegal betting & Aviator links disguised with character spaces or leet-speak.</p>
+                        <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: De-Leetification Engine</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Summary Matrix Table -->
+        <div class="mb-16">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm font-bold border border-blue-500/30">03</span>
+                <h2 class="text-2xl font-bold text-white">Detection Matrix & Signal Mapping</h2>
+            </div>
+
+            <div class="overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.02]">
+                <table class="w-full text-left text-xs sm:text-sm">
+                    <thead class="bg-white/5 text-slate-300 font-mono text-xs uppercase tracking-wider border-b border-white/10">
+                        <tr>
+                            <th class="p-4">Category</th>
+                            <th class="p-4">Threat Name</th>
+                            <th class="p-4">Primary Sensor / Input</th>
+                            <th class="p-4">Output Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-white/5 text-slate-300">
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-emerald-400 font-medium">Calls & Banking</td>
+                            <td class="p-4 font-bold text-white">Digital Arrest</td>
+                            <td class="p-4">VoIP Video Call > 15m + Banking App</td>
+                            <td class="p-4 font-mono text-blue-300">Digital Arrest Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-emerald-400 font-medium">Calls & Banking</td>
+                            <td class="p-4 font-bold text-white">OTP Theft / Vishing</td>
+                            <td class="p-4">High-Value OTP + Active/Recent Call</td>
+                            <td class="p-4 font-mono text-blue-300">OTP Warning Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-emerald-400 font-medium">Calls & Remote</td>
+                            <td class="p-4 font-bold text-white">Screen Sharing / RAT</td>
+                            <td class="p-4">AnyDesk/RustDesk Install + Active Call</td>
+                            <td class="p-4 font-mono text-blue-300">RAT Watchdog Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-emerald-400 font-medium">Calls & Video</td>
+                            <td class="p-4 font-bold text-white">Sextortion</td>
+                            <td class="p-4">Incoming Video Call from Unsaved Contact</td>
+                            <td class="p-4 font-mono text-blue-300">Sextortion Warning Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-blue-400 font-medium">Installation</td>
+                            <td class="p-4 font-bold text-white">Trojan APK Sideload</td>
+                            <td class="p-4">Package Installer active + Call Status</td>
+                            <td class="p-4 font-mono text-blue-300">Pre-Install Shield Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-blue-400 font-medium">Installation</td>
+                            <td class="p-4 font-bold text-white">Sideloaded Package</td>
+                            <td class="p-4">ACTION_PACKAGE_ADDED + Install Source</td>
+                            <td class="p-4 font-mono text-blue-300">Post-Install Alert Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-amber-400 font-medium">Social Funnel</td>
+                            <td class="p-4 font-bold text-white">Meta/IG Ad to Group</td>
+                            <td class="p-4">Rapid App Jump (Ad -> WhatsApp Group)</td>
+                            <td class="p-4 font-mono text-blue-300">Group Funnel Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-amber-400 font-medium">Social Funnel</td>
+                            <td class="p-4 font-bold text-white">Ad to Direct Message</td>
+                            <td class="p-4">Rapid App Jump (Ad -> Unsaved WhatsApp DM)</td>
+                            <td class="p-4 font-mono text-blue-300">DM Funnel Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-amber-400 font-medium">Cross-App</td>
+                            <td class="p-4 font-bold text-white">Fake Hotel Booking</td>
+                            <td class="p-4">Browser Search + WhatsApp Chat + QR Text</td>
+                            <td class="p-4 font-mono text-blue-300">Booking Scam Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-amber-400 font-medium">Browser Intent</td>
+                            <td class="p-4 font-bold text-white">Fake Customer Care</td>
+                            <td class="p-4">Search queries for Customer Care / Helpline</td>
+                            <td class="p-4 font-mono text-blue-300">Helpline Safety Alert</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-amber-400 font-medium">Browser Intent</td>
+                            <td class="p-4 font-bold text-white">Predatory Loan Apps</td>
+                            <td class="p-4">Search queries for Instant Loans</td>
+                            <td class="p-4 font-mono text-blue-300">Loan Safety Alert</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-amber-400 font-medium">Browser Intent</td>
+                            <td class="p-4 font-bold text-white">Job / Task Scams</td>
+                            <td class="p-4">Search queries for WFH / Online Tasks</td>
+                            <td class="p-4 font-mono text-blue-300">Job Safety Alert</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-amber-400 font-medium">Browser Intent</td>
+                            <td class="p-4 font-bold text-white">VIP Trading & Crypto</td>
+                            <td class="p-4">Search queries for Stock Tips / Crypto</td>
+                            <td class="p-4 font-mono text-blue-300">Trading Safety Alert</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-rose-400 font-medium">Messages</td>
+                            <td class="p-4 font-bold text-white">Electricity Bill Cut</td>
+                            <td class="p-4">WhatsApp / SMS Notification Text</td>
+                            <td class="p-4 font-mono text-blue-300">Scam Card Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-rose-400 font-medium">Messages</td>
+                            <td class="p-4 font-bold text-white">Bank / KYC / PAN Block</td>
+                            <td class="p-4">WhatsApp / SMS Notification Text</td>
+                            <td class="p-4 font-mono text-blue-300">Scam Card Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-rose-400 font-medium">Messages</td>
+                            <td class="p-4 font-bold text-white">Fake Payment Credit</td>
+                            <td class="p-4">Credit SMS from Personal Number</td>
+                            <td class="p-4 font-mono text-blue-300">Scam Card Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-rose-400 font-medium">Browser</td>
+                            <td class="p-4 font-bold text-white">Fake Virus / Antivirus</td>
+                            <td class="p-4">Browser Push Notification Text</td>
+                            <td class="p-4 font-mono text-blue-300">Browser Spam Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-indigo-400 font-medium">Chat & Web</td>
+                            <td class="p-4 font-bold text-white">Obfuscated Betting</td>
+                            <td class="p-4">WhatsApp / Web text with leet-speak</td>
+                            <td class="p-4 font-mono text-blue-300">Scam Funnel Overlay</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Download Banner -->
+        <div class="p-8 rounded-2xl bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-slate-900/50 border border-blue-500/30 text-center glow-effect">
+            <h3 class="text-2xl font-bold text-white mb-3">Protect Your Device Locally with EdgeGuard</h3>
+            <p class="text-slate-300 text-sm max-w-xl mx-auto mb-6">
+                All 20+ scam defenses run completely on-device without cloud latency, subscription fees, or data harvesting.
+            </p>
+            <a href="index.html#download" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-blue-600/30">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.997-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5896 8.4239 13.8568 8 12 8s-3.5896.4239-5.1365 1.0507L4.8412 5.5477a.416.416 0 00-.5676-.1521.416.416 0 00-.1521.5676l1.997 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
+                <span>Download EdgeGuard Beta</span>
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="container mx-auto px-6 py-10 border-t border-white/5 text-center text-slate-500 text-xs sm:text-sm">
+        <p class="mb-2">EdgeGuard &bull; Public Beta v1.0 &bull; Licensed under the Apache License 2.0</p>
+        <p class="mb-4">Architected & Engineered by <a href="https://github.com/parv55555" class="text-slate-400 hover:text-white underline">Parv Khandelwal</a></p>
+        <div class="flex items-center justify-center flex-wrap gap-4 text-xs text-slate-400">
+            <a href="index.html" class="hover:text-white transition-colors">Home</a>
+            <span>&bull;</span>
+            <a href="features.html" class="text-blue-400 hover:text-blue-300 underline font-medium">Features & Threats</a>
+            <span>&bull;</span>
+            <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+            <span>&bull;</span>
+            <a href="mailto:parv335@gmail.com" class="hover:text-white transition-colors">Contact Support</a>
+            <span>&bull;</span>
+            <a href="https://github.com/parv55555/EdgeGuard-AI" class="hover:text-white transition-colors">Source Code</a>
+            <span>&bull;</span>
+            <a href="index.html#download" class="hover:text-white transition-colors">Download APK</a>
+        </div>
+    </footer>
+
+</body>
+</html>
