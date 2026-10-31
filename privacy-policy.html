@@ -70,25 +70,25 @@
     <!-- Navigation Header -->
     <header class="sticky top-0 z-50 w-full backdrop-blur-md bg-[#07090e]/90 border-b border-white/5">
         <div class="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex justify-between items-center max-w-full">
-            <a href="index.html" class="flex items-center gap-2.5 group">
-                <img src="logo.png" alt="EdgeGuard Logo" class="w-9 h-9 rounded-xl object-contain shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform border border-blue-500/20">
-                <div class="flex items-center gap-2">
-                    <span class="text-xl font-bold tracking-tight text-white">Edge<span class="text-blue-500">Guard</span></span>
-                    <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/25 tracking-wide uppercase">Legal</span>
+            <a href="index.html" class="flex items-center gap-2 group shrink-0">
+                <img src="logo.png" alt="EdgeGuard Logo" class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl object-contain shadow-md shadow-blue-500/25 group-hover:scale-105 transition-transform border border-blue-500/20">
+                <div class="flex items-center gap-1.5 sm:gap-2">
+                    <span class="text-lg sm:text-xl font-bold tracking-tight text-white">Edge<span class="text-blue-500">Guard</span></span>
+                    <span class="hidden sm:inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/25 tracking-wide uppercase">Legal</span>
                 </div>
             </a>
 
-            <div class="flex items-center gap-6">
-                <a href="index.html" class="text-sm text-slate-300 hover:text-white transition-colors flex items-center gap-1.5">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                    <span>Back to Home</span>
+            <div class="flex items-center gap-2 sm:gap-4 shrink-0">
+                <a href="index.html" class="text-xs sm:text-sm text-slate-300 hover:text-white transition-colors flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-white/5 border border-white/5 hover:bg-white/10">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+                    <span>Home</span>
                 </a>
                 <a href="features.html" class="hidden md:flex text-sm text-slate-400 hover:text-white transition-colors">Features & Threats</a>
                 <a href="https://github.com/parv55555/EdgeGuard-AI" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors">
                     <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
                     <span>GitHub</span>
                 </a>
-                <a href="index.html#download" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold px-4 py-2 rounded-lg transition-all shadow-md shadow-blue-600/20">
+                <a href="index.html#download" class="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs sm:text-sm font-semibold px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg transition-all shadow-md shadow-blue-600/20 shrink-0">
                     <span>Get APK</span>
                 </a>
             </div>
@@ -166,12 +166,17 @@
                     
                     <!-- Permission 1: Accessibility -->
                     <div class="p-5 rounded-xl bg-white/[0.03] border border-white/5 space-y-2.5">
-                        <div class="flex items-center justify-between flex-wrap gap-2">
-                            <span class="font-bold text-white flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-                                Android Accessibility Service (<code class="text-blue-300 text-xs font-mono">AccessibilityService</code>)
-                            </span>
-                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20">Essential Core</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                            <div class="flex items-start gap-2.5">
+                                <span class="w-2 h-2 rounded-full bg-blue-400 mt-1.5 shrink-0"></span>
+                                <div class="font-bold text-white text-sm sm:text-base leading-snug">
+                                    Android Accessibility Service
+                                    <span class="block sm:inline text-xs font-mono font-normal text-blue-300 mt-0.5 sm:mt-0 sm:ml-1">
+                                        (<code class="text-blue-300">AccessibilityService</code>)
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="self-start sm:self-center text-[10px] font-mono px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/20 shrink-0">Essential Core</span>
                         </div>
                         <p class="text-xs text-slate-300">
                             <strong>Why It Is Needed:</strong> Inspects active on-screen view node hierarchies across messaging applications (WhatsApp, Telegram, SMS), mobile web browsers (Chrome, Samsung Internet), and social media platforms (Instagram, Facebook).
@@ -186,12 +191,17 @@
 
                     <!-- Permission 2: Phone State & Calls -->
                     <div class="p-5 rounded-xl bg-white/[0.03] border border-white/5 space-y-2.5">
-                        <div class="flex items-center justify-between flex-wrap gap-2">
-                            <span class="font-bold text-white flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                                Phone State & Call Monitoring (<code class="text-emerald-300 text-xs font-mono">READ_PHONE_STATE</code> & <code class="text-emerald-300 text-xs font-mono">READ_CALL_LOG</code>)
-                            </span>
-                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Behavioral UBA</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                            <div class="flex items-start gap-2.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400 mt-1.5 shrink-0"></span>
+                                <div class="font-bold text-white text-sm sm:text-base leading-snug">
+                                    Phone State & Call Monitoring
+                                    <span class="block sm:inline text-xs font-mono font-normal text-emerald-300 mt-0.5 sm:mt-0 sm:ml-1">
+                                        (<code class="text-emerald-300">READ_PHONE_STATE</code> & <code class="text-emerald-300">READ_CALL_LOG</code>)
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="self-start sm:self-center text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shrink-0">Behavioral UBA</span>
                         </div>
                         <p class="text-xs text-slate-300">
                             <strong>Why It Is Needed:</strong> Detects incoming unknown cellular or VoIP calls that occur within <strong>7 minutes</strong> of receiving a bank transaction OTP (one-time password).
@@ -206,12 +216,17 @@
 
                     <!-- Permission 3: Overlay -->
                     <div class="p-5 rounded-xl bg-white/[0.03] border border-white/5 space-y-2.5">
-                        <div class="flex items-center justify-between flex-wrap gap-2">
-                            <span class="font-bold text-white flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-rose-400"></span>
-                                Display Over Other Apps (<code class="text-rose-300 text-xs font-mono">SYSTEM_ALERT_WINDOW</code>)
-                            </span>
-                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20">Real-Time Intervention</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                            <div class="flex items-start gap-2.5">
+                                <span class="w-2 h-2 rounded-full bg-rose-400 mt-1.5 shrink-0"></span>
+                                <div class="font-bold text-white text-sm sm:text-base leading-snug">
+                                    Display Over Other Apps
+                                    <span class="block sm:inline text-xs font-mono font-normal text-rose-300 mt-0.5 sm:mt-0 sm:ml-1">
+                                        (<code class="text-rose-300">SYSTEM_ALERT_WINDOW</code>)
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="self-start sm:self-center text-[10px] font-mono px-2 py-0.5 rounded bg-rose-500/10 text-rose-400 border border-rose-500/20 shrink-0">Real-Time Intervention</span>
                         </div>
                         <p class="text-xs text-slate-300">
                             <strong>Why It Is Needed:</strong> Renders real-time floating scam alert cards directly over active messaging chats, ringing telephony screens, or browsers without closing your current window.
@@ -223,12 +238,17 @@
 
                     <!-- Permission 4: Package Added -->
                     <div class="p-5 rounded-xl bg-white/[0.03] border border-white/5 space-y-2.5">
-                        <div class="flex items-center justify-between flex-wrap gap-2">
-                            <span class="font-bold text-white flex items-center gap-2">
-                                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                                Package Installation Monitor (<code class="text-amber-300 text-xs font-mono">ACTION_PACKAGE_ADDED</code>)
-                            </span>
-                            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20">RAT Watchdog</span>
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/5 pb-2.5">
+                            <div class="flex items-start gap-2.5">
+                                <span class="w-2 h-2 rounded-full bg-amber-400 mt-1.5 shrink-0"></span>
+                                <div class="font-bold text-white text-sm sm:text-base leading-snug">
+                                    Package Installation Monitor
+                                    <span class="block sm:inline text-xs font-mono font-normal text-amber-300 mt-0.5 sm:mt-0 sm:ml-1">
+                                        (<code class="text-amber-300">ACTION_PACKAGE_ADDED</code>)
+                                    </span>
+                                </div>
+                            </div>
+                            <span class="self-start sm:self-center text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 border border-amber-500/20 shrink-0">RAT Watchdog</span>
                         </div>
                         <p class="text-xs text-slate-300">
                             <strong>Why It Is Needed:</strong> Alerts the user when a remote access software package (such as AnyDesk, TeamViewer, RustDesk, or AirDroid) is installed during or immediately after a call with an unknown caller.
