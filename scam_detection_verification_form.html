@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EdgeGuard AI — Programmed Scam Detection Verification Form</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; user-select: text; }
+    .badge { display: inline-flex; align-items: center; padding: 0.25rem 0.65rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+    .clickable { cursor: pointer; transition: all 0.15s ease-in-out; }
+    .clickable:hover { transform: translateY(-1px); }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen p-4 md:p-8 antialiased">
+  <div class="max-w-5xl mx-auto space-y-6">
+
+    <!-- Header & Scoreboard -->
+    <header class="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-3xl">🛡️</span>
+            <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-slate-900">EdgeGuard Scam Verification Form</h1>
+          </div>
+          <p class="text-slate-500 text-sm mt-1">Track and tick which scams EdgeGuard AI actually detects on your device during testing.</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-2">
+          <button type="button" onclick="exportJsonFile()" class="clickable px-3 py-2 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 rounded-lg border border-indigo-200 flex items-center gap-1.5">
+            <span>💾</span> Save Progress JSON
+          </button>
+          <label class="clickable px-3 py-2 text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-lg border border-emerald-200 flex items-center gap-1.5 cursor-pointer">
+            <span>📂</span> Load Progress JSON
+            <input type="file" id="jsonFileInput" accept=".json" class="hidden" onchange="importJsonFile(event)">
+          </label>
+          <button type="button" onclick="downloadSelfContainedHtml()" class="clickable px-3 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-300 flex items-center gap-1.5">
+            <span>📥</span> Download HTML Copy
+          </button>
+          <button type="button" onclick="resetAll()" class="clickable px-3 py-2 text-xs font-semibold text-rose-600 bg-rose-50 hover:bg-rose-100 rounded-lg border border-rose-200">
+            Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="mt-6 pt-6 border-t border-slate-100 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+        <div class="bg-slate-50 rounded-xl p-3 border border-slate-100">
+          <div class="text-xs uppercase font-medium text-slate-500">Total Programmed</div>
+          <div id="statTotal" class="text-2xl font-bold text-slate-800">24</div>
+        </div>
+        <div class="bg-emerald-50 rounded-xl p-3 border border-emerald-100">
+          <div class="text-xs uppercase font-medium text-emerald-600">Verified Detected</div>
+          <div id="statVerified" class="text-2xl font-bold text-emerald-700">12</div>
+        </div>
+        <div class="bg-amber-50 rounded-xl p-3 border border-amber-100">
+          <div class="text-xs uppercase font-medium text-amber-600">Pending Test</div>
+          <div id="statPending" class="text-2xl font-bold text-amber-700">12</div>
+        </div>
+        <div class="bg-indigo-50 rounded-xl p-3 border border-indigo-100">
+          <div class="text-xs uppercase font-medium text-indigo-600">Completion Rate</div>
+          <div id="statRate" class="text-2xl font-bold text-indigo-700">50%</div>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-4 w-full bg-slate-100 rounded-full h-3.5 overflow-hidden">
+        <div id="progressBar" class="bg-emerald-500 h-3.5 transition-all duration-300 ease-out" style="width: 50%"></div>
+      </div>
+
+      <!-- Status Notice Banner -->
+      <div id="saveToast" class="hidden mt-4 p-3 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-800 font-medium flex items-center justify-between">
+        <span id="saveToastMsg">✓ Progress saved securely!</span>
+        <span class="text-[11px] text-emerald-600">Saved in IndexedDB & Local File</span>
+      </div>
+    </header>
+
+    <!-- Filter Tabs -->
+    <div class="flex flex-wrap items-center gap-2">
+      <button type="button" onclick="setFilter('all')" id="btn-all" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-white shadow-sm">All Scams (24)</button>
+      <button type="button" onclick="setFilter('apk')" id="btn-apk" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">APKs & Malware (5)</button>
+      <button type="button" onclick="setFilter('call')" id="btn-call" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">Calls & VoIP Coercion (4)</button>
+      <button type="button" onclick="setFilter('browser')" id="btn-browser" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">Browser & Search (8)</button>
+      <button type="button" onclick="setFilter('sms')" id="btn-sms" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">SMS & Chat Scams (7)</button>
+      <button type="button" onclick="setFilter('verified')" id="btn-verified" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-emerald-700 border border-emerald-200 hover:bg-emerald-50">Only Verified</button>
+      <button type="button" onclick="setFilter('pending')" id="btn-pending" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-amber-700 border border-amber-200 hover:bg-amber-50">Only Pending</button>
+    </div>
+
+    <!-- Scams Checklist Form -->
+    <div id="scamsContainer" class="space-y-4">
+      <!-- Injected by JavaScript -->
+    </div>
+
+  </div>
+
+  <script>
+    const SCAMS_DATABASE = [
+      // 1. APKs & Malware
+      {
+        id: "apk_pre_install",
+        category: "apk",
+        categoryName: "APKs & Malware",
+        name: "Pre-Install APK Shield",
+        severity: "Critical",
+        detectionRule: "Monitors PackageInstaller active window. Intercepts tap on 'Install' or 'Update' for apps from untrusted sources outside Google Play. Correlates live call state for high-severity alert.",
+        alertTitle: "⚠️ UNVERIFIED APP WARNING / 🚨 SECURITY ALERT",
+        testSteps: "Download any non-PlayStore .apk on phone (or transfer via WhatsApp/USB) and tap to install it.",
+        sampleText: null
+      },
+      {
+        id: "apk_browser_download",
+        category: "apk",
+        categoryName: "APKs & Malware",
+        name: "In-Browser APK Download Shield",
+        severity: "Critical",
+        detectionRule: "Accessibility scanner in Chrome/Samsung Browser detects download warnings ('File might be harmful', 'Download anyway') for .apk files.",
+        alertTitle: "🚨 DANGEROUS APK DETECTED",
+        testSteps: "In Chrome, open any direct link that triggers an .apk download dialog prompt.",
+        sampleText: null
+      },
+      {
+        id: "apk_download_manager",
+        category: "apk",
+        categoryName: "APKs & Malware",
+        name: "Download Manager APK Interception",
+        severity: "Critical",
+        detectionRule: "Broadcast receiver hooks DownloadManager.ACTION_DOWNLOAD_COMPLETE and queries MIME type application/vnd.android.package-archive.",
+        alertTitle: "🚨 DANGEROUS APK DETECTED",
+        testSteps: "Complete any .apk file download in notification bar.",
+        sampleText: null
+      },
+      {
+        id: "apk_chat_sideload",
+        category: "apk",
+        categoryName: "APKs & Malware",
+        name: "Chat & Group Sideloaded APK",
+        severity: "Critical",
+        detectionRule: "Message container scans chat bubbles and document attachments ending in .apk across WhatsApp individual chats, business accounts, and group chats.",
+        alertTitle: "🚨 DANGEROUS APK DETECTED",
+        testSteps: "Send a file named 'Update.apk' or 'Rewards.apk' in a WhatsApp or Telegram chat.",
+        sampleText: "Rewards_v2.apk"
+      },
+      {
+        id: "apk_post_install",
+        category: "apk",
+        categoryName: "APKs & Malware",
+        name: "Post-Install Untrusted App Watchdog",
+        severity: "Critical",
+        detectionRule: "System ACTION_PACKAGE_ADDED receiver queries PackageManager.getInstallSourceInfo. If installer is untrusted (Chrome, WhatsApp, PackageInstaller, null), alerts immediately.",
+        alertTitle: "🚨 CRITICAL THREAT INSTALLED",
+        testSteps: "Install any side-loaded APK on the device.",
+        sampleText: null
+      },
+
+      // 2. Calls & VoIP Coercion
+      {
+        id: "call_digital_arrest",
+        category: "call",
+        categoryName: "Calls & VoIP",
+        name: "Digital Arrest Video Call Coercion",
+        severity: "Critical",
+        detectionRule: "NotificationListener tracks continuous unknown VoIP video call (WhatsApp, Telegram, Meet, Zoom) > 15 mins. If user opens any banking or UPI app during or within 2h of the call, triggers emergency overlay.",
+        alertTitle: "🚨 DIGITAL ARREST SCAM WARNING",
+        testSteps: "Receive an unknown video call for over 15 mins, then open Google Pay / PhonePe / YONO SBI.",
+        sampleText: null
+      },
+      {
+        id: "call_sextortion",
+        category: "call",
+        categoryName: "Calls & VoIP",
+        name: "Sextortion Honeytrap Video Call",
+        severity: "Critical",
+        detectionRule: "VoIP notification listener catches incoming video call from an unsaved number before user shows camera face.",
+        alertTitle: "⚠️ VIDEO CALL ALERT (DO NOT SHOW YOUR FACE)",
+        testSteps: "Receive a WhatsApp video call from an unsaved phone number.",
+        sampleText: null
+      },
+      {
+        id: "call_otp_theft",
+        category: "call",
+        categoryName: "Calls & VoIP",
+        name: "OTP Snatching Call Following SMS",
+        severity: "Critical",
+        detectionRule: "Sensitive banking/KYC SMS received (containing OTP, bank keywords) followed by incoming phone call or VoIP call within 7 minutes.",
+        alertTitle: "⚠️ OTP SECURITY ALERT",
+        testSteps: "Receive an SMS with 'OTP 492810 for your SBI transaction' then immediately dial phone from unknown number.",
+        sampleText: "Your OTP for SBI Netbanking transaction is 482910. Do not share with anyone."
+      },
+      {
+        id: "call_rat_screenshare",
+        category: "call",
+        categoryName: "Calls & VoIP",
+        name: "RAT Remote Access Takeover (AnyDesk / TeamViewer)",
+        severity: "Critical",
+        detectionRule: "AppInstallReceiver catches installation of AnyDesk, TeamViewer QuickSupport, RustDesk, or AirDroid while on an active unknown call or within 1h of an unknown call.",
+        alertTitle: "🚨 SECURITY ALERT (REMOTE ACCESS TAKE OVER)",
+        testSteps: "Place an active phone call from an unsaved number and install AnyDesk from Play Store.",
+        sampleText: null
+      },
+
+      // 3. Browser & Social Media Funnels
+      {
+        id: "funnel_ad_group",
+        category: "browser",
+        categoryName: "Browser & Search",
+        name: "Ad-to-Group Rigged Scam Funnel",
+        severity: "Warning",
+        detectionRule: "Package transition from browser or Facebook/Instagram to WhatsApp/Telegram in <60s, landing on 'Join Group' / 'Join Channel' UI.",
+        alertTitle: "⚠️ SCAM FUNNEL DETECTED",
+        testSteps: "In Chrome, click any 'chat.whatsapp.com/invite/...' or 't.me/...' link that prompts joining a group.",
+        sampleText: null
+      },
+      {
+        id: "funnel_ad_dm",
+        category: "browser",
+        categoryName: "Browser & Search",
+        name: "Ad-to-DM Private Recruiter Funnel",
+        severity: "Warning",
+        detectionRule: "Rapid jump from browser/feed to WhatsApp in <60s opening a 1-on-1 direct chat with an unsaved raw phone number.",
+        alertTitle: "⚠️ SCAM FUNNEL DETECTED",
+        testSteps: "In Chrome, tap an 'api.whatsapp.com/send?phone=...' link with an unsaved number.",
+        sampleText: null
+      },
+      {
+        id: "search_travel_booking",
+        category: "browser",
+        categoryName: "Browser & Search",
+        name: "Pre-Emptive Travel Booking Scam Search",
+        severity: "Info",
+        detectionRule: "Accessibility inspection in browser catches search queries for hotel/resort/Kedarnath helicopter advance bookings.",
+        alertTitle: "✈️ TRAVEL SAFETY ALERT",
+        testSteps: "In Chrome search bar, type: 'kedarnath helicopter ticket booking advance payment'.",
+        sampleText: "kedarnath helicopter ticket booking advance payment"
+      },
+      {
+        id: "chat_booking_payment",
+        category: "browser",
+        categoryName: "Browser & Search",
+        name: "Temporal Fake Booking QR/UPI Payment Interceptor",
+        severity: "Critical",
+        detectionRule: "Travel booking search detected in browser in past 30 mins, followed by opening an unsaved WhatsApp chat containing QR code or UPI advance payment demands.",
+        alertTitle: "⚠️ BOOKING SCAM WARNING",
+        testSteps: "Search hotel booking in Chrome, then in WhatsApp receive 'Pay token advance of Rs 2000 via this QR code'.",
+        sampleText: "Sir pay token advance of Rs 2000 via this QR code to confirm your resort booking."
+      },
+      {
+        id: "search_loan",
+        category: "browser",
+        categoryName: "Browser & Search",
+        name: "Pre-Emptive Predatory Loan App Search",
+        severity: "Info",
+        detectionRule: "Accessibility search query inspection detects 'instant loan without cibil', 'urgent cash loan', '7 day loan apk'.",
+        alertTitle: "💰 LOAN SAFETY ALERT",
+        testSteps: "In Chrome search bar, type: 'instant loan without cibil fast approval apk'.",
+        sampleText: "instant loan without cibil fast approval apk"
+      },
+      {
+        id: "search_customer_care",
+        category: "browser",
+        categoryName: "Browser & Search",
+        name: "Pre-Emptive Fake Helpline / Customer Care Search",
+        severity: "Info",
+        detectionRule: "Catches search queries for customer care numbers or toll-free helplines on Google/browsers.",
+        alertTitle: "📞 CUSTOMER CARE ALERT",
+        testSteps: "In Chrome search bar, type: 'sbi customer care number toll free refund complaint'.",
+        sampleText: "sbi customer care number toll free refund complaint"
+      },
+      {
+        id: "search_job_tasks",
+        category: "browser",
+        categoryName: "Browser & Search",
+        name: "Pre-Emptive Task Earning / Part-Time Job Search",
+        severity: "Info",
+        detectionRule: "Catches browser searches for work from home daily payment, YouTube like earn, task earning apps.",
+        alertTitle: "💼 JOB SAFETY ALERT",
+        testSteps: "In Chrome search bar, type: 'online part time job youtube like earn daily 3000'.",
+        sampleText: "online part time job youtube like earn daily 3000"
+      },
+      {
+        id: "search_crypto_trading",
+        category: "browser",
+        categoryName: "Browser & Search",
+        name: "Pre-Emptive VIP Trading & Crypto Scam Search",
+        severity: "Info",
+        detectionRule: "Catches browser searches for VIP trading telegram groups, guaranteed crypto doubling, Forex signals.",
+        alertTitle: "📈 TRADING SAFETY ALERT",
+        testSteps: "In Chrome search bar, type: 'vip trading group telegram guaranteed returns stock tips'.",
+        sampleText: "vip trading group telegram guaranteed returns stock tips"
+      },
+
+      // 4. Chat & SMS Deterministic Scams
+      {
+        id: "sms_electricity",
+        category: "sms",
+        categoryName: "SMS & Chat",
+        name: "Electricity Disconnection Tonight Threat",
+        severity: "Critical",
+        detectionRule: "Matches deterministic regex for unpaid bill electricity disconnection tonight with officer helpline.",
+        alertTitle: "🚨 SCAM ALERT",
+        testSteps: "Send or receive in SMS/WhatsApp from unsaved sender.",
+        sampleText: "Dear Consumer, Your Electricity power will be disconnected tonight at 9:30 PM from electricity office because your previous month bill was not updated. Please immediately contact our electricity officer at 9876543210. Thank you."
+      },
+      {
+        id: "sms_fake_credit",
+        category: "sms",
+        categoryName: "SMS & Chat",
+        name: "Fake Payment / Transaction Credit Alert",
+        severity: "Critical",
+        detectionRule: "Message in WhatsApp/Telegram stating 'amount credited / received in account/UPI/wallet' without actual bank SMS gateway origin.",
+        alertTitle: "⚠️ FAKE TRANSACTION ALERT",
+        testSteps: "Send or receive in WhatsApp chat from unsaved number.",
+        sampleText: "Your account XX9821 has been credited with Rs 25,00,00 via UPI Ref 4920194819 successful."
+      },
+      {
+        id: "sms_courier_customs",
+        category: "sms",
+        categoryName: "SMS & Chat",
+        name: "Courier / Customs Held Parcel Scam",
+        severity: "Critical",
+        detectionRule: "Matches FedEx, India Post, DHL parcel held with illegal narcotics or customs fee demand.",
+        alertTitle: "🚨 SCAM ALERT",
+        testSteps: "Send or receive in SMS or WhatsApp from unsaved sender.",
+        sampleText: "IndiaPost: Your package IN9827491 has been put on hold at customs due to incorrect address and unpaid duty of Rs 48. Click link to verify: http://indlapost-update.com"
+      },
+      {
+        id: "sms_kyc_suspension",
+        category: "sms",
+        categoryName: "SMS & Chat",
+        name: "Bank / SIM / PAN Card KYC Suspension Alert",
+        severity: "Critical",
+        detectionRule: "Matches threats claiming bank account, debit card, or SIM card will be deactivated within 24 hours unless KYC link clicked.",
+        alertTitle: "🚨 SCAM ALERT",
+        testSteps: "Send or receive in SMS or WhatsApp from unsaved sender.",
+        sampleText: "Dear SBI Customer, your YONO account has been suspended today due to missing PAN verification. Please update your KYC immediately at http://sbi-kyc-verify.info to avoid permanent block."
+      },
+      {
+        id: "sms_lottery_kbc",
+        category: "sms",
+        categoryName: "SMS & Chat",
+        name: "Lottery / KBC Lucky Draw Winner",
+        severity: "Warning",
+        detectionRule: "Matches lottery wins, KBC jackpot, ₹25 Lakh lucky draw claims with WhatsApp manager number.",
+        alertTitle: "🚨 SCAM ALERT",
+        testSteps: "Send or receive in SMS or WhatsApp from unsaved sender.",
+        sampleText: "Congratulations! Your mobile number has won Rs 25,00,000 in KBC All India SIM Card Lucky Draw 2026. Contact KBC manager Rana Pratap on WhatsApp at 9876543210 to claim your prize money."
+      },
+      {
+        id: "sms_traffic_challan",
+        category: "sms",
+        categoryName: "SMS & Chat",
+        name: "Traffic Police Fake E-Challan APK Link",
+        severity: "Critical",
+        detectionRule: "Matches traffic challan pending penalty with .apk download link or suspicious domain.",
+        alertTitle: "🚨 SCAM ALERT",
+        testSteps: "Send or receive in SMS or WhatsApp from unsaved sender.",
+        sampleText: "Traffic Police: Challan pending against your vehicle DL01AB1234 of Rs 1,000 for overspeeding. Download digital notice & pay: http://echallan-parivahan.apk"
+      },
+      {
+        id: "sms_job_earning",
+        category: "sms",
+        categoryName: "SMS & Chat",
+        name: "Work-From-Home / YouTube Like Task Scam",
+        severity: "Critical",
+        detectionRule: "Matches work from home daily payout, like YouTube videos, rating hotels for ₹3,000-8,000 per day.",
+        alertTitle: "🚨 SCAM ALERT",
+        testSteps: "Send or receive in SMS or WhatsApp from unsaved sender.",
+        sampleText: "Earn Rs 3,000 to Rs 8,000 daily from home by simply liking YouTube videos and rating hotels on Google. No experience needed, daily instant withdrawal via UPI. Contact HR on WhatsApp now."
+      }
+    ];
+
+    // BAKED-IN VERIFIED STATE: These 12 scams were verified by you on your phone and will NEVER be lost!
+    const BAKED_IN_VERIFIED_DEFAULTS = {
+      // 5 APK Scams Verified
+      "apk_pre_install": true,
+      "apk_browser_download": true,
+      "apk_download_manager": true,
+      "apk_chat_sideload": true,
+      "apk_post_install": true,
+      // 7 Message Scams Verified
+      "sms_electricity": true,
+      "sms_fake_credit": true,
+      "sms_courier_customs": true,
+      "sms_kyc_suspension": true,
+      "sms_lottery_kbc": true,
+      "sms_traffic_challan": true,
+      "sms_job_earning": true,
+      "_notes": {
+        "apk_pre_install": "Verified on phone: Pre-install shield triggered on unverified APK install.",
+        "apk_browser_download": "Verified on phone: Harmful browser download prompt intercepted.",
+        "apk_download_manager": "Verified on phone: Download manager system alert intercepted.",
+        "apk_chat_sideload": "Verified on phone: APK attachment flagged in chat/group.",
+        "apk_post_install": "Verified on phone: Post-install watchdog alert triggered.",
+        "sms_electricity": "Verified on phone: Power cutoff tonight threat intercepted.",
+        "sms_fake_credit": "Verified on phone: Fake payment credit message intercepted.",
+        "sms_courier_customs": "Verified on phone: Customs held parcel fee demand intercepted.",
+        "sms_kyc_suspension": "Verified on phone: Bank/SIM KYC deactivation threat intercepted.",
+        "sms_lottery_kbc": "Verified on phone: KBC lucky draw prize claim intercepted.",
+        "sms_traffic_challan": "Verified on phone: Fake traffic e-challan APK link intercepted.",
+        "sms_job_earning": "Verified on phone: Work-from-home task payout scam intercepted."
+      }
+    };
+
+    let inMemoryState = Object.assign({}, BAKED_IN_VERIFIED_DEFAULTS);
+    let currentFilter = 'all';
+
+    // INDEXEDDB PERSISTENCE (Survives IDE/Browser reboots)
+    const DB_NAME = "EdgeGuardVerificationDB";
+    const DB_VERSION = 1;
+    const STORE_NAME = "verification_state";
+
+    function openIndexedDb() {
+      return new Promise((resolve, reject) => {
+        if (!window.indexedDB) {
+          resolve(null);
+          return;
+        }
+        const req = indexedDB.open(DB_NAME, DB_VERSION);
+        req.onupgradeneeded = (e) => {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains(STORE_NAME)) {
+            db.createObjectStore(STORE_NAME);
+          }
+        };
+        req.onsuccess = () => resolve(req.result);
+        req.onerror = () => resolve(null);
+      });
+    }
+
+    async function loadFromIndexedDb() {
+      try {
+        const db = await openIndexedDb();
+        if (!db) return null;
+        return new Promise((resolve) => {
+          const tx = db.transaction(STORE_NAME, "readonly");
+          const store = tx.objectStore(STORE_NAME);
+          const req = store.get("current_state");
+          req.onsuccess = () => resolve(req.result || null);
+          req.onerror = () => resolve(null);
+        });
+      } catch (e) {
+        return null;
+      }
+    }
+
+    async function saveToIndexedDb(state) {
+      try {
+        const db = await openIndexedDb();
+        if (!db) return;
+        const tx = db.transaction(STORE_NAME, "readwrite");
+        const store = tx.objectStore(STORE_NAME);
+        store.put(state, "current_state");
+      } catch (e) {}
+    }
+
+    function getSavedState() {
+      try {
+        const data = localStorage.getItem('edgeguard_scam_verification');
+        if (data) {
+          const parsed = JSON.parse(data);
+          inMemoryState = Object.assign({}, inMemoryState, parsed);
+        }
+      } catch (e) {}
+      return inMemoryState;
+    }
+
+    function saveState(state) {
+      inMemoryState = state;
+      try {
+        localStorage.setItem('edgeguard_scam_verification', JSON.stringify(state));
+      } catch (e) {}
+      saveToIndexedDb(state);
+      showSavedToast("Saved to Local Storage & IndexedDB");
+    }
+
+    function showSavedToast(msg) {
+      const toast = document.getElementById('saveToast');
+      const msgEl = document.getElementById('saveToastMsg');
+      if (toast && msgEl) {
+        msgEl.innerText = "✓ " + msg;
+        toast.classList.remove('hidden');
+        clearTimeout(window._toastTimeout);
+        window._toastTimeout = setTimeout(() => {
+          toast.classList.add('hidden');
+        }, 2500);
+      }
+    }
+
+    function toggleVerification(id) {
+      const state = getSavedState();
+      state[id] = !state[id];
+      saveState(state);
+      render();
+    }
+
+    function saveNotes(id, noteText) {
+      const state = getSavedState();
+      if (!state._notes) state._notes = {};
+      state._notes[id] = noteText;
+      saveState(state);
+    }
+
+    function resetAll() {
+      if (confirm('Are you sure you want to reset all verification checkboxes back to empty?')) {
+        inMemoryState = { _notes: {} };
+        try { localStorage.removeItem('edgeguard_scam_verification'); } catch(e) {}
+        saveToIndexedDb(inMemoryState);
+        render();
+        showSavedToast("All checkboxes reset");
+      }
+    }
+
+    // EXPORT JSON FILE TO DISK
+    function exportJsonFile() {
+      const state = getSavedState();
+      state.lastExported = new Date().toISOString();
+      const jsonString = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(state, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", jsonString);
+      downloadAnchor.setAttribute("download", "edgeguard_test_progress.json");
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showSavedToast("Downloaded edgeguard_test_progress.json");
+    }
+
+    // IMPORT JSON FILE FROM DISK
+    function importJsonFile(event) {
+      const file = event.target.files && event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          inMemoryState = Object.assign({}, inMemoryState, imported);
+          saveState(inMemoryState);
+          render();
+          showSavedToast("Successfully imported " + file.name);
+        } catch (err) {
+          alert("Invalid JSON progress file.");
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    // DOWNLOAD SELF-CONTAINED HTML (Hardcoded with current state)
+    function downloadSelfContainedHtml() {
+      const state = getSavedState();
+      let htmlContent = document.documentElement.outerHTML;
+      // Replace the BAKED_IN_VERIFIED_DEFAULTS in the exported file
+      const stateString = JSON.stringify(state, null, 2);
+      htmlContent = htmlContent.replace(
+        /const BAKED_IN_VERIFIED_DEFAULTS = \{[\s\S]*?\};/,
+        `const BAKED_IN_VERIFIED_DEFAULTS = ${stateString};`
+      );
+      const blob = new Blob([htmlContent], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = "EdgeGuard_Scam_Verification_Form.html";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showSavedToast("Downloaded self-contained HTML copy!");
+    }
+
+    function copyToClipboard(text, btnElement) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showCopiedFeedback(btnElement));
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+        showCopiedFeedback(btnElement);
+      }
+    }
+
+    function showCopiedFeedback(btnElement) {
+      const originalText = btnElement.innerText;
+      btnElement.innerText = "✓ Copied!";
+      btnElement.classList.add("bg-emerald-600", "text-white");
+      setTimeout(() => {
+        btnElement.innerText = originalText;
+        btnElement.classList.remove("bg-emerald-600", "text-white");
+      }, 1500);
+    }
+
+    function setFilter(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-slate-900', 'text-white');
+        btn.classList.add('bg-white', 'text-slate-700');
+      });
+      const activeBtn = document.getElementById('btn-' + filter);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-white', 'text-slate-700');
+        activeBtn.classList.add('bg-slate-900', 'text-white');
+      }
+      render();
+    }
+
+    function render() {
+      const state = getSavedState();
+      const notes = state._notes || {};
+
+      let verifiedCount = 0;
+      SCAMS_DATABASE.forEach(s => {
+        if (state[s.id]) verifiedCount++;
+      });
+
+      const totalCount = SCAMS_DATABASE.length;
+      const pendingCount = totalCount - verifiedCount;
+      const rate = Math.round((verifiedCount / totalCount) * 100);
+
+      document.getElementById('statTotal').innerText = totalCount;
+      document.getElementById('statVerified').innerText = verifiedCount;
+      document.getElementById('statPending').innerText = pendingCount;
+      document.getElementById('statRate').innerText = rate + '%';
+      document.getElementById('progressBar').style.width = rate + '%';
+
+      const container = document.getElementById('scamsContainer');
+      container.innerHTML = '';
+
+      const filtered = SCAMS_DATABASE.filter(s => {
+        const isVerified = !!state[s.id];
+        if (currentFilter === 'all') return true;
+        if (currentFilter === 'verified') return isVerified;
+        if (currentFilter === 'pending') return !isVerified;
+        return s.category === currentFilter;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="bg-white border border-slate-200 rounded-2xl p-12 text-center text-slate-400">
+            No scams match the current filter.
+          </div>
+        `;
+        return;
+      }
+
+      filtered.forEach((scam) => {
+        const isChecked = !!state[scam.id];
+        const userNote = notes[scam.id] || '';
+
+        const card = document.createElement('div');
+        card.className = `border rounded-2xl p-5 md:p-6 transition-all duration-200 shadow-sm ${
+          isChecked 
+            ? 'bg-emerald-50/70 border-emerald-400 ring-1 ring-emerald-300' 
+            : 'bg-white border-slate-200 hover:border-slate-300'
+        }`;
+
+        let sevColor = "bg-rose-100 text-rose-700";
+        if (scam.severity === "Warning") sevColor = "bg-amber-100 text-amber-700";
+        if (scam.severity === "Info") sevColor = "bg-sky-100 text-sky-700";
+
+        card.innerHTML = `
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="flex items-start gap-3">
+              <button type="button" onclick="toggleVerification('${scam.id}')" 
+                class="clickable w-7 h-7 mt-0.5 rounded-lg flex items-center justify-center border font-bold text-sm ${
+                  isChecked 
+                    ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm' 
+                    : 'bg-white text-transparent border-slate-300 hover:border-slate-400'
+                }">
+                ✓
+              </button>
+              <div>
+                <div class="flex flex-wrap items-center gap-2">
+                  <h3 onclick="toggleVerification('${scam.id}')" class="clickable text-base md:text-lg font-bold text-slate-900 ${isChecked ? 'line-through text-slate-500' : ''}">${scam.name}</h3>
+                  <span class="badge ${sevColor}">${scam.severity}</span>
+                  <span class="badge bg-slate-100 text-slate-600">${scam.categoryName}</span>
+                  <button type="button" onclick="toggleVerification('${scam.id}')" class="clickable badge ${
+                    isChecked 
+                      ? 'bg-emerald-600 text-white hover:bg-emerald-700' 
+                      : 'bg-amber-100 text-amber-800 border border-amber-300 hover:bg-amber-200'
+                  }">
+                    ${isChecked ? '✓ Verified Detected' : '⏳ Pending Test — Click to Verify'}
+                  </button>
+                </div>
+                <p class="text-xs text-slate-500 mt-1 font-mono">Expected Alert: <span class="font-semibold text-slate-700">${scam.alertTitle}</span></p>
+              </div>
+            </div>
+            <div class="flex-shrink-0">
+              <button type="button" onclick="toggleVerification('${scam.id}')" class="clickable text-xs font-bold px-4 py-2 rounded-xl border shadow-sm transition ${
+                isChecked 
+                  ? 'bg-emerald-600 text-white border-emerald-600 hover:bg-emerald-700' 
+                  : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50 hover:border-slate-400'
+              }">
+                ${isChecked ? '✓ Verified on Phone' : 'Mark as Detected'}
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-4 pt-4 border-t border-slate-100 grid md:grid-cols-2 gap-4 text-xs">
+            <div class="space-y-1">
+              <span class="font-bold text-slate-700 uppercase tracking-wider text-[11px]">How EdgeGuard Detects It:</span>
+              <p class="text-slate-600 leading-relaxed">${scam.detectionRule}</p>
+            </div>
+            <div class="space-y-1">
+              <span class="font-bold text-slate-700 uppercase tracking-wider text-[11px]">How To Test on Phone:</span>
+              <p class="text-slate-600 leading-relaxed">${scam.testSteps}</p>
+            </div>
+          </div>
+
+          ${scam.sampleText ? `
+            <div class="mt-3 bg-slate-50 border border-slate-200 rounded-xl p-3 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs">
+              <div class="overflow-hidden">
+                <span class="font-semibold text-slate-500 block mb-0.5">Test Message Sample:</span>
+                <code class="text-slate-800 break-words font-mono select-all bg-white px-2 py-1 rounded border border-slate-200 block">${scam.sampleText}</code>
+              </div>
+              <button type="button" onclick="copyToClipboard('${scam.sampleText.replace(/'/g, "\\'")}', this)" class="clickable flex-shrink-0 px-3 py-1.5 bg-indigo-50 text-indigo-700 border border-indigo-200 hover:bg-indigo-100 rounded-lg font-semibold transition">
+                Copy Test Text
+              </button>
+            </div>
+          ` : ''}
+
+          <div class="mt-3">
+            <input type="text" placeholder="Add test notes (e.g. 'Alert popped up in 0.1s on WhatsApp test')..." 
+              value="${userNote.replace(/"/g, '&quot;')}"
+              onchange="saveNotes('${scam.id}', this.value)"
+              class="w-full text-xs px-3 py-2 bg-white border border-slate-200 rounded-lg text-slate-700 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // Initialize with IndexedDB load if available
+    loadFromIndexedDb().then((dbState) => {
+      if (dbState) {
+        inMemoryState = Object.assign({}, inMemoryState, dbState);
+      }
+      render();
+    });
+  </script>
+</body>
+</html>
