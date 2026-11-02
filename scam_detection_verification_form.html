@@ -76,8 +76,8 @@
 
     <!-- Filter Tabs -->
     <div class="flex flex-wrap items-center gap-2">
-      <button type="button" onclick="setFilter('all')" id="btn-all" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-white shadow-sm">All Scams (24)</button>
-      <button type="button" onclick="setFilter('apk')" id="btn-apk" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">APKs & Malware (5)</button>
+      <button type="button" onclick="setFilter('all')" id="btn-all" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-slate-900 text-white shadow-sm">All Scams (25)</button>
+      <button type="button" onclick="setFilter('apk')" id="btn-apk" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">APKs & Malware (6)</button>
       <button type="button" onclick="setFilter('call')" id="btn-call" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">Calls & VoIP Coercion (4)</button>
       <button type="button" onclick="setFilter('browser')" id="btn-browser" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">Browser & Search (8)</button>
       <button type="button" onclick="setFilter('sms')" id="btn-sms" class="clickable filter-btn px-4 py-2 rounded-xl text-xs font-semibold bg-white text-slate-700 border border-slate-200 hover:bg-slate-50">SMS & Chat Scams (7)</button>
@@ -138,6 +138,17 @@
         alertTitle: "🚨 DANGEROUS APK DETECTED",
         testSteps: "Send a file named 'Update.apk' or 'Rewards.apk' in a WhatsApp or Telegram chat.",
         sampleText: "Rewards_v2.apk"
+      },
+      {
+        id: "apk_storage_file_list",
+        category: "apk",
+        categoryName: "APKs & Malware",
+        name: "Storage & File Manager APK File Interception",
+        severity: "Critical",
+        detectionRule: "Accessibility scanner in Samsung My Files, Files by Google, and system file manager apps inspects visible file items. If an unverified .apk file appears as an element on screen in a file list (without opening or tapping it), alerts immediately.",
+        alertTitle: "🚨 DANGEROUS APK DETECTED",
+        testSteps: "Open My Files or Files by Google, go to Downloads or any folder where an .apk file (like echallan.apk or Update.apk) is stored so it appears in the list.",
+        sampleText: "Traffic_Police_Challan.apk"
       },
       {
         id: "apk_post_install",
