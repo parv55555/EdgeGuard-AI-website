@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Features & Scam Detections | EdgeGuard</title>
-    <meta name="description" content="Explore all 20+ scams, social engineering funnels, and behavioral patterns diagnosed and neutralized by EdgeGuard 100% on-device.">
+    <meta name="description" content="Explore all 21+ scams, social engineering funnels, and behavioral patterns diagnosed and neutralized by EdgeGuard 100% on-device.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -115,7 +115,7 @@
                 <h2 class="text-2xl font-bold text-white">Core System Features & Architecture</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
                     <div class="flex items-center gap-2.5 text-blue-400 font-bold text-base">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -155,14 +155,34 @@
                         All threat detections and audit records are saved in a local, encrypted Room SQLite database on your device. To ensure total data hygiene, records older than 12 days are automatically deleted.
                     </p>
                 </div>
+
+                <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+                    <div class="flex items-center gap-2.5 text-cyan-400 font-bold text-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                        <span>Zero-Day Web Fraud & Typosquatting Shield</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Evaluates live browser URLs and DOMs across Chrome, Brave, and Samsung Internet. Uses mathematical Levenshtein edit distance against 20+ protected brands, detects Punycode/homograph attacks, flags burner TLDs, and suppresses SERP search false alarms.
+                    </p>
+                </div>
+
+                <div class="p-6 rounded-2xl bg-white/[0.03] border border-white/5 space-y-2">
+                    <div class="flex items-center gap-2.5 text-amber-400 font-bold text-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                        <span>Pre-Emptive Search Intent & Funnel Defense</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        Interprets predatory intent queries (instant loans, fake customer helplines, hotel booking advance traps) and social funnel jumps into Telegram/WhatsApp before the user is tricked into sharing money or installing malware.
+                    </p>
+                </div>
             </div>
         </div>
 
-        <!-- Section 2: All 20 Scams Grouped By Vector -->
+        <!-- Section 2: All 21 Scams Grouped By Vector -->
         <div class="mb-16">
             <div class="flex items-center gap-3 mb-6">
                 <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-mono text-sm font-bold border border-blue-500/30">02</span>
-                <h2 class="text-2xl font-bold text-white">The 20 Scams Diagnosed & Alerted</h2>
+                <h2 class="text-2xl font-bold text-white">The 21 Scams Diagnosed & Alerted</h2>
             </div>
 
             <!-- Group A: Behavioral, Call & Social Engineering -->
@@ -219,14 +239,14 @@
                 </div>
             </div>
 
-            <!-- Group B: Malicious Apps, APKs & Sideloading -->
+            <!-- Group B: Malicious Apps, APKs & Web Threat Defense -->
             <div class="mb-10 space-y-4">
                 <div class="flex items-center gap-2 border-b border-white/10 pb-2">
                     <span class="text-xs font-mono uppercase tracking-wider text-blue-400 font-semibold">Group B</span>
-                    <h3 class="text-lg font-bold text-white">Malicious App, APK & Sideloading Scams</h3>
+                    <h3 class="text-lg font-bold text-white">Malicious App, APK & Web Threat Defense</h3>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <!-- 5. Pre-Install Shield -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
                         <h4 class="font-bold text-white text-base">5. Pre-Install APK Shield</h4>
@@ -250,6 +270,14 @@
                         <p class="text-xs text-slate-400"><strong>Detection:</strong> Accessibility node inspection of browser download prompts matching <code class="text-blue-300 font-mono text-[10px]">.apk</code>.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Malicious APK Download Alert</div>
                     </div>
+
+                    <!-- 8. Real-Time Zero-Day Web Fraud & Phishing Shield -->
+                    <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-cyan-500/30 transition-all space-y-2">
+                        <h4 class="font-bold text-white text-base">8. Counterfeit & Phishing Web Shield</h4>
+                        <p class="text-xs text-slate-300"><strong>Threat:</strong> Counterfeit shopping portals, fake brand sales, and phishing forms (e.g., typosquatted domains like <code class="text-rose-300 font-mono text-[10px]">amaz0n-sale.shop</code>) stealing credentials or direct UPI payments.</p>
+                        <p class="text-xs text-slate-400"><strong>Detection:</strong> 100% on-device mathematical Levenshtein distance analysis, Punycode attack detection, high-risk burner TLD checks, and SERP-aware false-positive suppression.</p>
+                        <div class="text-[11px] font-mono text-cyan-300 bg-cyan-500/10 p-2 rounded border border-cyan-500/20">Alert: Floating Scam Card Overlay with "TRUST THIS SITE" Option</div>
+                    </div>
                 </div>
             </div>
 
@@ -261,57 +289,57 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <!-- 8. Meta / IG Ad to Group Funnel -->
+                    <!-- 9. Meta / IG Ad to Group Funnel -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">8. Meta / Instagram Ad Scam Funnel</h4>
+                        <h4 class="font-bold text-white text-base">9. Meta / Instagram Ad Scam Funnel</h4>
                         <p class="text-xs text-slate-300"><strong>Threat:</strong> Sponsored Instagram/Facebook trading ads promising 500% profits that funnel users directly into Telegram/WhatsApp scam groups.</p>
                         <p class="text-xs text-slate-400"><strong>Detection:</strong> Rapid app transition (< 60s) from Instagram, Facebook, or browser into group invite UI ("Join Group" / "Join Channel").</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Scam Funnel Warning Overlay</div>
                     </div>
 
-                    <!-- 9. DM Funnel Jump -->
+                    <!-- 10. DM Funnel Jump -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">9. Direct Message (DM) Funnel Jump</h4>
+                        <h4 class="font-bold text-white text-base">10. Direct Message (DM) Funnel Jump</h4>
                         <p class="text-xs text-slate-300"><strong>Threat:</strong> Social ads jumping users into 1-on-1 WhatsApp chats with scammers claiming to offer part-time jobs or crypto investments.</p>
                         <p class="text-xs text-slate-400"><strong>Detection:</strong> Immediate transition from ad/browser into an unsaved numeric contact conversation.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: DM Scam Funnel Overlay</div>
                     </div>
 
-                    <!-- 10. Fake Travel Booking -->
+                    <!-- 11. Fake Travel Booking -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">10. Fake Hotel & Tour Booking Scam</h4>
+                        <h4 class="font-bold text-white text-base">11. Fake Hotel & Tour Booking Scam</h4>
                         <p class="text-xs text-slate-300"><strong>Threat:</strong> Fake hotel listings on search engines redirecting users to WhatsApp, where scammers demand QR code advance payments.</p>
                         <p class="text-xs text-slate-400"><strong>Detection:</strong> Browser hotel search + WhatsApp chat within 30 min + Payment/QR/UPI request text detected on screen.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Booking Scam Warning Overlay</div>
                     </div>
 
-                    <!-- 11. Fake Customer Care Intent -->
+                    <!-- 12. Fake Customer Care Intent -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">11. Pre-Emptive Customer Care Scam</h4>
+                        <h4 class="font-bold text-white text-base">12. Pre-Emptive Customer Care Scam</h4>
                         <p class="text-xs text-slate-300"><strong>Threat:</strong> SEO-poisoned fake customer care and toll-free numbers placed on Google by cybercriminals.</p>
                         <p class="text-xs text-slate-400"><strong>Detection:</strong> Detects user typing customer care or helpline queries in browser URL/search bars.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Pre-Emptive Helpline Safety Alert</div>
                     </div>
 
-                    <!-- 12. Instant Loan Trap -->
+                    <!-- 13. Instant Loan Trap -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">12. Pre-Emptive Instant Loan Trap</h4>
+                        <h4 class="font-bold text-white text-base">13. Pre-Emptive Instant Loan Trap</h4>
                         <p class="text-xs text-slate-300"><strong>Threat:</strong> Predatory loan apps charging illegal fees and blackmailing victims using contact list access.</p>
                         <p class="text-xs text-slate-400"><strong>Detection:</strong> Browser search input matching instant loan queries.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Pre-Emptive Loan Safety Alert</div>
                     </div>
 
-                    <!-- 13. Part-Time Job / Task Scam -->
+                    <!-- 14. Part-Time Job / Task Scam -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">13. Pre-Emptive Part-Time Job Scam</h4>
+                        <h4 class="font-bold text-white text-base">14. Pre-Emptive Part-Time Job Scam</h4>
                         <p class="text-xs text-slate-300"><strong>Threat:</strong> "Like YouTube videos for money" or "WFH data entry" requiring upfront security deposits or registration fees.</p>
                         <p class="text-xs text-slate-400"><strong>Detection:</strong> Browser search input matching online task and WFH job search patterns.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Pre-Emptive Job Safety Alert</div>
                     </div>
 
-                    <!-- 14. VIP Trading & Crypto -->
+                    <!-- 15. VIP Trading & Crypto -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">14. Pre-Emptive Trading & Crypto Scam</h4>
+                        <h4 class="font-bold text-white text-base">15. Pre-Emptive Trading & Crypto Scam</h4>
                         <p class="text-xs text-slate-300"><strong>Threat:</strong> Unregistered advisory groups promising guaranteed returns or risk-free crypto doubling.</p>
                         <p class="text-xs text-slate-400"><strong>Detection:</strong> Browser search queries matching stock tips, intraday signals, and crypto trading.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-2 rounded border border-blue-500/20">Alert: Pre-Emptive Trading Safety Alert</div>
@@ -327,44 +355,44 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-3 gap-4">
-                    <!-- 15. Electricity Bill Cut -->
+                    <!-- 16. Electricity Bill Cut -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">15. Electricity Disconnection Scam</h4>
+                        <h4 class="font-bold text-white text-base">16. Electricity Disconnection Scam</h4>
                         <p class="text-xs text-slate-300">Detects messages claiming power will be cut tonight at 9:30 PM due to unpaid bills.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: TFLite SLM + Deterministic</div>
                     </div>
 
-                    <!-- 16. Bank / PAN / KYC Block -->
+                    <!-- 17. Bank / PAN / KYC Block -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">16. Bank / PAN / KYC Block Scam</h4>
+                        <h4 class="font-bold text-white text-base">17. Bank / PAN / KYC Block Scam</h4>
                         <p class="text-xs text-slate-300">Detects phishing notices claiming SBI YONO, bank accounts, or SIMs are suspended.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: TFLite SLM + Vector Match</div>
                     </div>
 
-                    <!-- 17. Fake Payment Credit (Reverse-UPI) -->
+                    <!-- 18. Fake Payment Credit (Reverse-UPI) -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">17. Fake Payment Credit (Reverse-UPI)</h4>
+                        <h4 class="font-bold text-white text-base">18. Fake Payment Credit (Reverse-UPI)</h4>
                         <p class="text-xs text-slate-300">Detects forged credit SMS from personal numbers used to trick victims into refunding fake payments.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: Sender Validation + Balance Heuristic</div>
                     </div>
 
-                    <!-- 18. Fake Lottery / KBC -->
+                    <!-- 19. Fake Lottery / KBC -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">18. Fake Lottery / KBC Prize</h4>
+                        <h4 class="font-bold text-white text-base">19. Fake Lottery / KBC Prize</h4>
                         <p class="text-xs text-slate-300">Flags unsolicited SMS claiming ₹25 Lakh lottery victories in lucky draws.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: TFLite SLM Classifier</div>
                     </div>
 
-                    <!-- 19. Browser Push Notification Spam -->
+                    <!-- 20. Browser Push Notification Spam -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">19. Fake Virus Browser Spam</h4>
+                        <h4 class="font-bold text-white text-base">20. Fake Virus Browser Spam</h4>
                         <p class="text-xs text-slate-300">Intercepts rogue web notifications ("virus detected", "clean storage now", "mcafee expired").</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: Notification Listener Spam Rule</div>
                     </div>
 
-                    <!-- 20. Obfuscated Betting Funnels -->
+                    <!-- 21. Obfuscated Betting Funnels -->
                     <div class="p-5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-all space-y-2">
-                        <h4 class="font-bold text-white text-base">20. Obfuscated Betting Funnels</h4>
+                        <h4 class="font-bold text-white text-base">21. Obfuscated Betting Funnels</h4>
                         <p class="text-xs text-slate-300">Detects illegal betting & Aviator links disguised with character spaces or leet-speak.</p>
                         <div class="text-[11px] font-mono text-blue-300 bg-blue-500/10 p-1.5 rounded border border-blue-500/20">Engine: De-Leetification Engine</div>
                     </div>
@@ -425,6 +453,18 @@
                             <td class="p-4 font-bold text-white">Sideloaded Package</td>
                             <td class="p-4">ACTION_PACKAGE_ADDED + Install Source</td>
                             <td class="p-4 font-mono text-blue-300">Post-Install Alert Overlay</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-blue-400 font-medium">Browser / Web</td>
+                            <td class="p-4 font-bold text-white">Drive-By APK Download</td>
+                            <td class="p-4">Browser node inspection matching .apk downloads</td>
+                            <td class="p-4 font-mono text-blue-300">Malicious APK Download Card</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-4 text-cyan-400 font-medium">Browser / Web</td>
+                            <td class="p-4 font-bold text-white">Counterfeit & Phishing Sites</td>
+                            <td class="p-4">Levenshtein Typosquatting, Punycode, Burner TLDs</td>
+                            <td class="p-4 font-mono text-blue-300">Scam Overlay ("TRUST THIS SITE")</td>
                         </tr>
                         <tr class="hover:bg-white/[0.02]">
                             <td class="p-4 text-amber-400 font-medium">Social Funnel</td>
@@ -507,7 +547,7 @@
         <div class="p-8 rounded-2xl bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-slate-900/50 border border-blue-500/30 text-center glow-effect">
             <h3 class="text-2xl font-bold text-white mb-3">Protect Your Device Locally with EdgeGuard</h3>
             <p class="text-slate-300 text-sm max-w-xl mx-auto mb-6">
-                All 20+ scam defenses run completely on-device without cloud latency, subscription fees, or data harvesting.
+                All 21+ scam defenses run completely on-device without cloud latency, subscription fees, or data harvesting.
             </p>
             <a href="index.html#download" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold px-6 py-3 rounded-xl transition-all shadow-lg shadow-blue-600/30">
                 <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.551 0 .9993.4482.9993.9993.0001.5511-.4483.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.997-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5896 8.4239 13.8568 8 12 8s-3.5896.4239-5.1365 1.0507L4.8412 5.5477a.416.416 0 00-.5676-.1521.416.416 0 00-.1521.5676l1.997 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/></svg>
