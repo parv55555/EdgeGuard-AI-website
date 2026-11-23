@@ -28,7 +28,7 @@
         },
         {
           "key": "Content-Disposition",
-          "value": "attachment; filename=EdgeGuard-beta.apk"
+          "value": "attachment; filename=EdgeGuard-AI-beta.apk"
         }
       ]
     },
@@ -41,7 +41,7 @@
         },
         {
           "key": "Content-Disposition",
-          "value": "attachment; filename=EdgeGuard-beta.apk"
+          "value": "attachment; filename=EdgeGuard-AI-beta.apk"
         }
       ]
     }
